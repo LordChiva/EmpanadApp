@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">EmpanadApp</string>
+    <string name="hint_username">Ingrese su usuario</string>
+    <string name="hint_password">contraseña</string>
+    <string name="login_error_msg">Error: Campos faltantes o erroneos</string>
+    <string name="button_login">Ingresar</string>
+</resources>
