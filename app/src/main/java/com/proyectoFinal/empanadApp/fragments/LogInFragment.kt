@@ -1,5 +1,6 @@
 package com.proyectoFinal.empanadApp.fragments
 
+import android.app.Activity
 import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -11,8 +12,12 @@ import android.widget.EditText
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.navigation.findNavController
 import com.google.android.material.snackbar.Snackbar
+import com.proyectoFinal.empanadApp.LoginActivity
+import com.proyectoFinal.empanadApp.MainActivity
 import com.proyectoFinal.empanadApp.R
 import com.proyectoFinal.empanadApp.view_models.LogInViewModel
+import android.content.Intent as Intent
+
 
 class LogInFragment : Fragment() {
 
@@ -49,9 +54,10 @@ class LogInFragment : Fragment() {
                 Snackbar.make(root_layout, "Error: Campos faltantes o erroneos", Snackbar.LENGTH_SHORT)
                     .show()
             } else {
-                val action1 = LogInFragmentDirections.actionLogInFragmentToEmpanadaFragment()
-                v.findNavController().navigate(action1)
+                (activity as MainActivity).logIn()
             }
+            /*val action1 = LogInFragmentDirections.actionLogInFragmentToEmpanadaFragment()
+                       v.findNavController().navigate(action1)*/
         }
     }
 
