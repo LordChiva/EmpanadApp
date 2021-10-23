@@ -3,13 +3,14 @@ package com.proyectoFinal.empanadApp.adapters
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.RecyclerView
 import com.proyectoFinal.empanadApp.R
-import com.proyectoFinal.empanadApp.entities.Empanada
+import com.proyectoFinal.empanadApp.entities.Producto
 
-class EmpanadaAdapter (var empanadasList: MutableList<Empanada>,
+class EmpanadaAdapter (var empanadasList: MutableList<Producto>,
                        val onItemClick: (Int) -> Unit)
     : RecyclerView.Adapter<EmpanadaAdapter.EmpanadaHolder>() {
     override fun onCreateViewHolder(
@@ -25,6 +26,7 @@ class EmpanadaAdapter (var empanadasList: MutableList<Empanada>,
         holder.getCardView().setOnClickListener{
             onItemClick(position)
         }
+        holder.getImage()
     }
 
     override fun getItemCount(): Int {
@@ -44,6 +46,10 @@ class EmpanadaAdapter (var empanadasList: MutableList<Empanada>,
 
         fun getCardView() : CardView {
             return view.findViewById(R.id.itemCardEmpanada)
+        }
+
+        fun getImage() : ImageView{
+            return view.findViewById(R.id.imageView)
         }
     }
 }

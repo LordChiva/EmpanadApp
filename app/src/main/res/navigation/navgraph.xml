@@ -10,4 +10,9 @@
         android:name="com.proyectoFinal.empanadApp.fragments.EmpanadaFragment"
         android:label="empanada_fragment"
         tools:layout="@layout/empanada_fragment" />
+    <fragment
+        android:id="@+id/userFragment"
+        android:name="com.proyectoFinal.empanadApp.fragments.UserFragment"
+        android:label="user_fragment"
+        tools:layout="@layout/user_fragment" />
 </navigation>

@@ -1,18 +1,18 @@
 package com.proyectoFinal.empanadApp.repository
 
-import com.proyectoFinal.empanadApp.entities.Empanada
+import com.proyectoFinal.empanadApp.entities.Producto
 
 class EmpanadasRepository {
-    var empanadasList : MutableList<Empanada> = mutableListOf()
+    var empanadasList : MutableList<Producto> = mutableListOf()
 
-    fun getEmpanadas() : MutableList<Empanada>{
-        empanadasList.add(Empanada("Jamon y Queso", "Extra de queso", ""))
-        empanadasList.add(Empanada("Carne suave", "Extra suave", ""))
-        empanadasList.add(Empanada("Carne picante", "Es un poco picante", ""))
-        empanadasList.add(Empanada("Queso y cebolla", "Extra de queso", ""))
-        empanadasList.add(Empanada("Pollo", "Saborizada", ""))
-        empanadasList.add(Empanada("Jujeña", "desc", ""))
-        empanadasList.add(Empanada("Salteña", "desc", ""))
+    fun getEmpanadas() : MutableList<Producto>{
+        empanadasList.add(Producto("Jamon y Queso", "Extra de queso", "https://i2.wp.com/www.donitalo.com/wp-content/uploads/2020/06/empanada-jamon-y-queso.png"))
+        empanadasList.add(Producto("Carne suave", "Extra suave", ""))
+        empanadasList.add(Producto("Carne picante", "Es un poco picante", ""))
+        empanadasList.add(Producto("Queso y cebolla", "Extra de queso", ""))
+        empanadasList.add(Producto("Pollo", "Saborizada", ""))
+        empanadasList.add(Producto("Jujeña", "desc", ""))
+        empanadasList.add(Producto("Salteña", "desc", ""))
 
         return empanadasList
     }

@@ -25,6 +25,7 @@ class EmpanadaFragment : Fragment() {
     lateinit var recycler : RecyclerView
     lateinit var adapter : EmpanadaAdapter
     private var empanadasRepository = EmpanadasRepository()
+    lateinit var imageView: View
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -32,6 +33,7 @@ class EmpanadaFragment : Fragment() {
     ): View? {
         v = inflater.inflate(R.layout.empanada_fragment, container, false)
         recycler = v.findViewById(R.id.recEmpanada)
+
 
         return v
     }
