@@ -3,11 +3,16 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/Martin/AndroidStudioProjects/EmpanadApp/app/src/main/res/layout/activity_empanad_app.xml" value="0.18" />
         <entry key="..\:/Users/Martin/AndroidStudioProjects/EmpanadApp/app/src/main/res/layout/activity_login.xml" value="0.20416666666666666" />
         <entry key="..\:/Users/Martin/AndroidStudioProjects/EmpanadApp/app/src/main/res/layout/activity_main.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/Martin/AndroidStudioProjects/EmpanadApp/app/src/main/res/layout/carrito_fragment.xml" value="0.20416666666666666" />
         <entry key="..\:/Users/Martin/AndroidStudioProjects/EmpanadApp/app/src/main/res/layout/empanada_fragment.xml" value="0.20416666666666666" />
         <entry key="..\:/Users/Martin/AndroidStudioProjects/EmpanadApp/app/src/main/res/layout/item_empanada.xml" value="0.20416666666666666" />
         <entry key="..\:/Users/Martin/AndroidStudioProjects/EmpanadApp/app/src/main/res/layout/log_in_fragment.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/Martin/AndroidStudioProjects/EmpanadApp/app/src/main/res/layout/register_fragment.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/Martin/AndroidStudioProjects/EmpanadApp/app/src/main/res/layout/user_fragment.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/Martin/AndroidStudioProjects/EmpanadApp/app/src/main/res/menu/bottom_bar.xml" value="0.20416666666666666" />
       </map>
     </option>
   </component>

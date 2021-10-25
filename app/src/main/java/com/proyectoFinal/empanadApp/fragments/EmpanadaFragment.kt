@@ -25,6 +25,7 @@ class EmpanadaFragment : Fragment() {
     lateinit var recycler : RecyclerView
     lateinit var adapter : EmpanadaAdapter
     private var empanadasRepository = EmpanadasRepository()
+    lateinit var imageView: View
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -32,6 +33,7 @@ class EmpanadaFragment : Fragment() {
     ): View? {
         v = inflater.inflate(R.layout.empanada_fragment, container, false)
         recycler = v.findViewById(R.id.recEmpanada)
+
 
         return v
     }
@@ -41,7 +43,7 @@ class EmpanadaFragment : Fragment() {
 
         recycler.setHasFixedSize(true)
         recycler.layoutManager = LinearLayoutManager(context)
-        recycler.adapter = EmpanadaAdapter(empanadasRepository.getEmpanadas()){ pos ->
+        recycler.adapter = EmpanadaAdapter(empanadasRepository.getEmpanadas(), requireContext()){ pos ->
             onItemClick(pos)
         }
     }
@@ -53,6 +55,6 @@ class EmpanadaFragment : Fragment() {
     }
 
     fun onItemClick(position: Int){
-        Snackbar.make(v,empanadasRepository.getEmpanadas()[position].description, Snackbar.LENGTH_SHORT).show()
+        Snackbar.make(v,empanadasRepository.getEmpanadas()[position].descripcion, Snackbar.LENGTH_SHORT).show()
     }
 }

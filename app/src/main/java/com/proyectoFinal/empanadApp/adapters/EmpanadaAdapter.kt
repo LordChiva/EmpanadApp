@@ -1,15 +1,19 @@
 package com.proyectoFinal.empanadApp.adapters
 
+import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.proyectoFinal.empanadApp.R
-import com.proyectoFinal.empanadApp.entities.Empanada
+import com.proyectoFinal.empanadApp.entities.Producto
 
-class EmpanadaAdapter (var empanadasList: MutableList<Empanada>,
+class EmpanadaAdapter (var empanadasList: MutableList<Producto>,
+                       var context: Context,
                        val onItemClick: (Int) -> Unit)
     : RecyclerView.Adapter<EmpanadaAdapter.EmpanadaHolder>() {
     override fun onCreateViewHolder(
@@ -21,10 +25,16 @@ class EmpanadaAdapter (var empanadasList: MutableList<Empanada>,
     }
 
     override fun onBindViewHolder(holder: EmpanadaAdapter.EmpanadaHolder, position: Int) {
-        holder.setTitle(empanadasList[position].title)
+        holder.setTitle(empanadasList[position].nombre)
+
+        Glide.with(context)
+            .load(empanadasList[position].urlImage).into(holder.getImage())
+
+
         holder.getCardView().setOnClickListener{
             onItemClick(position)
         }
+        holder.getImage()
     }
 
     override fun getItemCount(): Int {
@@ -44,6 +54,10 @@ class EmpanadaAdapter (var empanadasList: MutableList<Empanada>,
 
         fun getCardView() : CardView {
             return view.findViewById(R.id.itemCardEmpanada)
+        }
+
+        fun getImage() : ImageView{
+            return view.findViewById(R.id.imageView)
         }
     }
 }
