@@ -43,7 +43,7 @@ class EmpanadaFragment : Fragment() {
 
         recycler.setHasFixedSize(true)
         recycler.layoutManager = LinearLayoutManager(context)
-        recycler.adapter = EmpanadaAdapter(empanadasRepository.getEmpanadas()){ pos ->
+        recycler.adapter = EmpanadaAdapter(empanadasRepository.getEmpanadas(), requireContext()){ pos ->
             onItemClick(pos)
         }
     }
@@ -55,6 +55,6 @@ class EmpanadaFragment : Fragment() {
     }
 
     fun onItemClick(position: Int){
-        Snackbar.make(v,empanadasRepository.getEmpanadas()[position].description, Snackbar.LENGTH_SHORT).show()
+        Snackbar.make(v,empanadasRepository.getEmpanadas()[position].descripcion, Snackbar.LENGTH_SHORT).show()
     }
 }

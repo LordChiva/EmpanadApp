@@ -11,7 +11,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun logIn() {
-        val intent = Intent(this, LoginActivity::class.java)
+        val intent = Intent(this, EmpanadAppActivity::class.java)
         startActivity(intent)
         finish()
     }

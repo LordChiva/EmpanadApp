@@ -1,6 +1,5 @@
 package com.proyectoFinal.empanadApp.fragments
 
-import android.app.Activity
 import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -12,11 +11,9 @@ import android.widget.EditText
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.navigation.findNavController
 import com.google.android.material.snackbar.Snackbar
-import com.proyectoFinal.empanadApp.LoginActivity
 import com.proyectoFinal.empanadApp.MainActivity
 import com.proyectoFinal.empanadApp.R
 import com.proyectoFinal.empanadApp.view_models.LogInViewModel
-import android.content.Intent as Intent
 
 
 class LogInFragment : Fragment() {
@@ -27,17 +24,19 @@ class LogInFragment : Fragment() {
 
     private lateinit var viewModel: LogInViewModel
     lateinit var v: View
-    lateinit var btnIngresar: Button
+    lateinit var bttnIngresar: Button
+    lateinit var bttnRegistrarse: Button
     lateinit var txtUser: EditText
     lateinit var txtPass: EditText
-    lateinit var root_layout: ConstraintLayout
+    private lateinit var root_layout: ConstraintLayout
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         v = inflater.inflate(R.layout.log_in_fragment, container, false)
-        btnIngresar = v.findViewById(R.id.btnIngresar)
+        bttnIngresar = v.findViewById(R.id.bttnIngresar)
+        bttnRegistrarse = v.findViewById(R.id.bttnRegistrarse)
         txtUser = v.findViewById(R.id.user)
         txtPass = v.findViewById(R.id.password)
         root_layout = v.findViewById(R.id.root_layout)
@@ -48,7 +47,7 @@ class LogInFragment : Fragment() {
     override fun onStart() {
         super.onStart()
 
-        btnIngresar.setOnClickListener {
+        bttnIngresar.setOnClickListener {
 
             if (txtUser.length() < 1 && txtPass.length() < 1){
                 Snackbar.make(root_layout, "Error: Campos faltantes o erroneos", Snackbar.LENGTH_SHORT)
@@ -58,6 +57,11 @@ class LogInFragment : Fragment() {
             }
             /*val action1 = LogInFragmentDirections.actionLogInFragmentToEmpanadaFragment()
                        v.findNavController().navigate(action1)*/
+        }
+
+        bttnRegistrarse.setOnClickListener {
+            val action1 = LogInFragmentDirections.actionLogInFragmentToRegisterFragment()
+            v.findNavController().navigate(action1)
         }
     }
 

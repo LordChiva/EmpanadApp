@@ -1,9 +1,18 @@
 <resources>
     <string name="app_name">EmpanadApp</string>
     <string name="hint_username">Ingrese su usuario</string>
+    <string name="hint_nombre">Ingrese su nombre</string>
+    <string name="hint_apellido">Ingrese su apellido</string>
+    <string name="hint_dni">Ingrese su DNI</string>
+    <string name="hint_celular">Ingrese su celular</string>
+    <string name="hint_direccion">Ingrese su direccion</string>
+    <string name="hint_email">Ingrese su email</string>
     <string name="hint_password">contraseña</string>
+    <string name="hint_confirm_password">confirmar contraseña</string>
     <string name="login_error_msg">Error: Campos faltantes o erroneos</string>
     <string name="button_login">Ingresar</string>
     <string name="button_register">Registrarse</string>
-    <string name="login_failed">"Login failed"</string>
+    <string name="login_failed">Login failed</string>
+    <string name="welcome_register">Crea tu cuenta de EmpanadApp</string>
+    <string name="welcome_login">¡Te damos la Bienvenida!</string>
 </resources>

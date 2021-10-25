@@ -15,4 +15,9 @@
         android:name="com.proyectoFinal.empanadApp.fragments.UserFragment"
         android:label="user_fragment"
         tools:layout="@layout/user_fragment" />
+    <fragment
+        android:id="@+id/carritoFragment"
+        android:name="com.proyectoFinal.empanadApp.fragments.CarritoFragment"
+        android:label="carrito_fragment"
+        tools:layout="@layout/carrito_fragment" />
 </navigation>
