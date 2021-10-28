@@ -3,7 +3,7 @@ package com.proyectoFinal.empanadApp.repository
 import com.proyectoFinal.empanadApp.entities.Producto
 
 class EmpanadasRepository {
-    var empanadasList : MutableList<Producto> = mutableListOf()
+    /*var empanadasList : MutableList<Producto> = mutableListOf()
 
     fun getEmpanadas() : MutableList<Producto>{
         empanadasList.add(Producto("Jamon y Queso", "Extra de queso", "https://i2.wp.com/www.donitalo.com/wp-content/uploads/2020/06/empanada-jamon-y-queso.png",
@@ -22,5 +22,5 @@ class EmpanadasRepository {
             "125", 200.0))
 
         return empanadasList
-    }
+    }*/
 }

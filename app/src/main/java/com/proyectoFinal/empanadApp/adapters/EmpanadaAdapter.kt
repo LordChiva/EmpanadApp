@@ -26,6 +26,8 @@ class EmpanadaAdapter (var empanadasList: MutableList<Producto>,
 
     override fun onBindViewHolder(holder: EmpanadaAdapter.EmpanadaHolder, position: Int) {
         holder.setTitle(empanadasList[position].nombre)
+        holder.setDescripcion(empanadasList[position].descripcion)
+
 
         Glide.with(context)
             .load(empanadasList[position].urlImage).into(holder.getImage())
@@ -58,6 +60,16 @@ class EmpanadaAdapter (var empanadasList: MutableList<Producto>,
 
         fun getImage() : ImageView{
             return view.findViewById(R.id.imageView)
+        }
+
+        fun setDescripcion(descripcion: String) {
+            val txtDesc: TextView = view.findViewById(R.id.txtDescEmpanada)
+            txtDesc.text = descripcion
+        }
+
+        fun setPrecio(precio: String) {
+            val txtPrecio: TextView = view.findViewById(R.id.txtPrecioEmpanada)
+            txtPrecio.text = precio
         }
     }
 }

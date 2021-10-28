@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "931401897351",
+    "project_id": "empanadapptp3",
+    "storage_bucket": "empanadapptp3.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:931401897351:android:f4308cd9edd98ace6faf22",
+        "android_client_info": {
+          "package_name": "com.proyectoFinal.empanadApp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "931401897351-1v85847fnfau3a40ja1i525o6le194u7.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCtqBOwmO-ZaBoQYxQ0CGRiafzsIl_Awlo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "931401897351-1v85847fnfau3a40ja1i525o6le194u7.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

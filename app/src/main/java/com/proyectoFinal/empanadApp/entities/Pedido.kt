@@ -7,4 +7,6 @@ class Pedido (var IDPedido: String,
               var IDCliente: String,
               var IDProducto: String,
               var importe: Double) {
+    /*metodo de pago |tarjeta|efectivo|trasferencia|
+    * direccion de entrega*/
 }
