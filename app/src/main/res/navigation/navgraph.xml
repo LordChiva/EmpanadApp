@@ -14,10 +14,27 @@
         android:id="@+id/userFragment"
         android:name="com.proyectoFinal.empanadApp.fragments.UserFragment"
         android:label="user_fragment"
-        tools:layout="@layout/user_fragment" />
+        tools:layout="@layout/user_fragment" >
+        <action
+            android:id="@+id/action_userFragment_to_historialDeComprasFragment"
+            app:destination="@id/historialDeComprasFragment" />
+        <action
+            android:id="@+id/action_userFragment_to_datosPersonalesFragment"
+            app:destination="@id/datosPersonalesFragment" />
+    </fragment>
     <fragment
         android:id="@+id/carritoFragment"
         android:name="com.proyectoFinal.empanadApp.fragments.CarritoFragment"
         android:label="carrito_fragment"
         tools:layout="@layout/carrito_fragment" />
+    <fragment
+        android:id="@+id/historialDeComprasFragment"
+        android:name="com.proyectoFinal.empanadApp.fragments.HistorialDeComprasFragment"
+        android:label="historial_de_compras_fragment"
+        tools:layout="@layout/historial_de_compras_fragment" />
+    <fragment
+        android:id="@+id/datosPersonalesFragment"
+        android:name="com.proyectoFinal.empanadApp.fragments.DatosPersonalesFragment"
+        android:label="datos_personales_fragment"
+        tools:layout="@layout/datos_personales_fragment" />
 </navigation>

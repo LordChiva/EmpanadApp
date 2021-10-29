@@ -7,8 +7,12 @@
         <entry key="..\:/Users/Martin/AndroidStudioProjects/EmpanadApp/app/src/main/res/layout/activity_login.xml" value="0.20416666666666666" />
         <entry key="..\:/Users/Martin/AndroidStudioProjects/EmpanadApp/app/src/main/res/layout/activity_main.xml" value="0.20416666666666666" />
         <entry key="..\:/Users/Martin/AndroidStudioProjects/EmpanadApp/app/src/main/res/layout/carrito_fragment.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/Martin/AndroidStudioProjects/EmpanadApp/app/src/main/res/layout/datos_personales_fragment.xml" value="0.25" />
         <entry key="..\:/Users/Martin/AndroidStudioProjects/EmpanadApp/app/src/main/res/layout/empanada_fragment.xml" value="0.20416666666666666" />
-        <entry key="..\:/Users/Martin/AndroidStudioProjects/EmpanadApp/app/src/main/res/layout/item_empanada.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/Martin/AndroidStudioProjects/EmpanadApp/app/src/main/res/layout/historial_de_compras_fragment.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/Martin/AndroidStudioProjects/EmpanadApp/app/src/main/res/layout/item_carrito.xml" value="0.33" />
+        <entry key="..\:/Users/Martin/AndroidStudioProjects/EmpanadApp/app/src/main/res/layout/item_empanada.xml" value="0.33" />
+        <entry key="..\:/Users/Martin/AndroidStudioProjects/EmpanadApp/app/src/main/res/layout/item_historial.xml" value="0.20416666666666666" />
         <entry key="..\:/Users/Martin/AndroidStudioProjects/EmpanadApp/app/src/main/res/layout/log_in_fragment.xml" value="0.20416666666666666" />
         <entry key="..\:/Users/Martin/AndroidStudioProjects/EmpanadApp/app/src/main/res/layout/register_fragment.xml" value="0.20416666666666666" />
         <entry key="..\:/Users/Martin/AndroidStudioProjects/EmpanadApp/app/src/main/res/layout/user_fragment.xml" value="0.20416666666666666" />
@@ -16,7 +20,7 @@
       </map>
     </option>
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_1_8" default="false" project-jdk-name="1.8" project-jdk-type="JavaSDK">
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_1_8" default="true" project-jdk-name="1.8" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>
   <component name="ProjectType">

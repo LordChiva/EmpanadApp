@@ -9,14 +9,45 @@
 
     <TextView
         android:id="@+id/txtUserTest"
-        android:layout_width="261dp"
-        android:layout_height="129dp"
+        android:layout_width="264dp"
+        android:layout_height="64dp"
         android:text="Mi Perfil"
+        android:textAlignment="center"
         android:textSize="34sp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/bttnDatosPersonales"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.117" />
+        app:layout_constraintVertical_bias="0.349" />
+
+    <Button
+        android:id="@+id/bttnDatosPersonales"
+        android:layout_width="192dp"
+        android:layout_height="60dp"
+        android:text="@string/button_datos_personales"
+        app:layout_constraintBottom_toTopOf="@+id/bttnHistorialCompra"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtUserTest" />
+
+    <Button
+        android:id="@+id/bttnHistorialCompra"
+        android:layout_width="214dp"
+        android:layout_height="61dp"
+        android:text="@string/button_historial_carrito"
+        app:layout_constraintBottom_toTopOf="@+id/bttnCerrarSesion"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/bttnDatosPersonales" />
+
+    <Button
+        android:id="@+id/bttnCerrarSesion"
+        android:layout_width="151dp"
+        android:layout_height="57dp"
+        android:text="@string/button_cerrar_sesion"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/bttnHistorialCompra" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

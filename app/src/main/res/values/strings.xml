@@ -15,4 +15,10 @@
     <string name="login_failed">Login failed</string>
     <string name="welcome_register">Crea tu cuenta de EmpanadApp</string>
     <string name="welcome_login">¡Te damos la Bienvenida!</string>
+    <string name="button_historial_carrito">Historial de Compra</string>
+    <string name="button_datos_personales">Datos Personales</string>
+    <string name="button_cerrar_sesion">Cerrar Sesión</string>
+    <string name="name_carrito">Mi Carrito</string>
+    <string name="name_historial">Mi Carrito</string>
+    <string name="name_datos_personales">Datos Personales</string>
 </resources>

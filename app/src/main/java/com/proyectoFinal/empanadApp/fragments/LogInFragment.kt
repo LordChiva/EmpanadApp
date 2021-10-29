@@ -24,8 +24,8 @@ class LogInFragment : Fragment() {
 
     private lateinit var viewModel: LogInViewModel
     lateinit var v: View
-    lateinit var bttnIngresar: Button
-    lateinit var bttnRegistrarse: Button
+    private lateinit var bttnIngresar: Button
+    private lateinit var bttnRegistrarse: Button
     lateinit var txtUser: EditText
     lateinit var txtPass: EditText
     private lateinit var root_layout: ConstraintLayout

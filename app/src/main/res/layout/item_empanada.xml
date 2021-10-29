@@ -14,8 +14,8 @@
 
         <TextView
             android:id="@+id/txtTitleEmpanada"
-            android:layout_width="111dp"
-            android:layout_height="28dp"
+            android:layout_width="135dp"
+            android:layout_height="24dp"
             android:text="TextView"
             android:textSize="20sp"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -26,9 +26,9 @@
 
         <ImageView
             android:id="@+id/imageView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_width="123dp"
+            android:layout_height="82dp"
+            app:layout_constraintBottom_toTopOf="@+id/floatingActionButton2"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/txtTitleEmpanada"
             app:layout_constraintTop_toTopOf="parent"
@@ -36,8 +36,8 @@
 
         <TextView
             android:id="@+id/txtDescEmpanada"
-            android:layout_width="104dp"
-            android:layout_height="21dp"
+            android:layout_width="130dp"
+            android:layout_height="29dp"
             android:text="TextView"
             app:layout_constraintBottom_toTopOf="@+id/txtPrecioEmpanada"
             app:layout_constraintEnd_toStartOf="@+id/imageView"
@@ -47,14 +47,28 @@
 
         <TextView
             android:id="@+id/txtPrecioEmpanada"
-            android:layout_width="90dp"
-            android:layout_height="35dp"
+            android:layout_width="91dp"
+            android:layout_height="25dp"
             android:text="TextView"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/imageView"
-            app:layout_constraintHorizontal_bias="0.426"
+            app:layout_constraintHorizontal_bias="0.349"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/txtDescEmpanada" />
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/floatingActionButton2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:clickable="true"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.596"
+            app:layout_constraintStart_toEndOf="@+id/txtPrecioEmpanada"
+            app:layout_constraintTop_toBottomOf="@+id/imageView"
+            app:srcCompat="@drawable/ic_baseline_add_shopping_cart_24"
+            tools:ignore="SpeakableTextPresentCheck" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.cardview.widget.CardView>
