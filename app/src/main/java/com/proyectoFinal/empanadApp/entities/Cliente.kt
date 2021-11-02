@@ -2,13 +2,13 @@ package com.proyectoFinal.empanadApp.entities
 
 import java.util.*
 
-class Cliente (var IDCliente: String,
-               var nombre: String,
+class Cliente (var nombre: String,
+               var contrasenia: String,
                var apellido: String,
                var dni: String,
                var email: String,
                var telefono: String,
                var direccion: String,
-               var fechaNacimiento: Date,
-               var contrasenia: String) {
+               /*var fechaNacimiento: Date,
+               var IDCliente: String*/) {
 }
