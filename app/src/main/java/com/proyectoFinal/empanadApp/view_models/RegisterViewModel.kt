@@ -33,9 +33,9 @@ class RegisterViewModel : ViewModel() {
 
 
     fun crearUsuario(nombre : String, apellido : String, dni : String, telefono : String,
-                direccion : String, email : String, contrasenia : String){
+                     direccion : String, email : String, contrasenia : String){
         var usuario : Cliente = Cliente(nombre, apellido, dni, telefono, direccion, email,
-                                        contrasenia)
+            contrasenia)
         db.collection("Usuarios").add(usuario)
     }
 
