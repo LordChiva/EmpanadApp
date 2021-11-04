@@ -1,6 +1,6 @@
 package com.proyectoFinal.empanadApp.entities
 
-import java.util.*
+@androidx.room.Entity(tableName = "usuarios")
 
 class Cliente (var nombre: String,
                var contrasenia: String,

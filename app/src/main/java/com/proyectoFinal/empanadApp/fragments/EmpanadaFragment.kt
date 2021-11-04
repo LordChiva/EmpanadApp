@@ -1,12 +1,16 @@
 package com.proyectoFinal.empanadApp.fragments
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.firestore.ktx.toObject
 import com.google.firebase.ktx.Firebase
@@ -25,11 +29,9 @@ class EmpanadaFragment : Fragment() {
     private lateinit var viewModel: EmpanadaViewModel
     lateinit var v: View
     lateinit var recycler: RecyclerView
-    lateinit var adapter: EmpanadaAdapter
-    private var empanadasRepository = EmpanadasRepository()
-    lateinit var imageView: View
-    val db = Firebase.firestore
     private var productos: MutableList<Producto> = arrayListOf()
+    private val db = Firebase.firestore
+    private var docRef = db.collection("Productos")
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -37,7 +39,13 @@ class EmpanadaFragment : Fragment() {
     ): View? {
         v = inflater.inflate(R.layout.empanada_fragment, container, false)
         recycler = v.findViewById(R.id.recEmpanada)
-        db.collection("Productos").get()
+
+        return v
+    }
+
+    override fun onStart() {
+            super.onStart()
+        docRef.get()
             .addOnSuccessListener {
                 for (producto in it) {
                     productos.add(producto.toObject())
@@ -47,38 +55,26 @@ class EmpanadaFragment : Fragment() {
                         onItemClick(pos)
                     }
             }
-
-        return v
-    }
-
-    private fun onItemClick(pos: Int) {
-
-    }
-
-    override fun onStart() {
-        super.onStart()
+            .addOnFailureListener { exception ->
+                Log.d("Test", "get failed with ", exception)
+            }
         recycler.setHasFixedSize(true) // Ajusta el recycler a toda la pantalla
         recycler.layoutManager =
             LinearLayoutManager(context) // Coloca de forma lineal los elementos (Uno debajo de otro)
-        }
     }
 
-    /*override fun onStart() {
-        super.onStart()
+    private fun onItemClick(position: Int){
+        val action1 = EmpanadaFragmentDirections
+                .actionEmpanadaFragmentToCarritoFragment(productos[position])
+                   v.findNavController().navigate(action1)
+        //Snackbar.make(v,productos[position].descripcion, Snackbar.LENGTH_SHORT).show()
+    }
 
-        recycler.setHasFixedSize(true)
-        recycler.layoutManager = LinearLayoutManager(context)
-        recycler.adapter = EmpanadaAdapter(empanadasRepository.getEmpanadas(), requireContext()){ pos ->
-            onItemClick(pos)
-        }
-    }*/
-
-    /*override fun onActivityCreated(savedInstanceState: Bundle?) {
+    override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         viewModel = ViewModelProvider(this).get(EmpanadaViewModel::class.java)
         // TODO: Use the ViewModel
-    }*/
+    }
+}
 
-    /*fun onItemClick(position: Int){
-        Snackbar.make(v,empanadasRepository.getEmpanadas()[position].descripcion, Snackbar.LENGTH_SHORT).show()
-    }*/
+

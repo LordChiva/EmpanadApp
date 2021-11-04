@@ -10,43 +10,44 @@
         android:layout_height="match_parent">
 
         <TextView
-            android:id="@+id/txtTituloEmpanadaItem"
-            android:layout_width="189dp"
-            android:layout_height="56dp"
+            android:id="@+id/txtTituloEmpanadaSelec"
+            android:layout_width="221dp"
+            android:layout_height="57dp"
             android:text="TextView"
             android:textSize="20sp"
-            app:layout_constraintBottom_toTopOf="@+id/floatingActionButton6"
+            app:layout_constraintBottom_toTopOf="@+id/bttnRestar1"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.193"
+            app:layout_constraintHorizontal_bias="0.226"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/txtPrecioEmpanadaItem"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:id="@+id/txtPrecioEmpanadaSelec"
+            android:layout_width="92dp"
+            android:layout_height="32dp"
             android:text="TextView"
             android:textSize="16sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.124"
+            app:layout_constraintHorizontal_bias="0.134"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/txtTituloEmpanadaItem"
-            app:layout_constraintVertical_bias="0.434" />
+            app:layout_constraintTop_toBottomOf="@+id/txtTituloEmpanadaSelec"
+            app:layout_constraintVertical_bias="0.484" />
 
         <TextView
             android:id="@+id/txtCantidadProducto"
             android:layout_width="57dp"
             android:layout_height="31dp"
-            android:text="TextView"
+            android:text="@string/cantidad_producto"
+            android:textAlignment="center"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/floatingActionButton5"
-            app:layout_constraintStart_toEndOf="@+id/floatingActionButton6"
+            app:layout_constraintEnd_toStartOf="@+id/bttnSumar1"
+            app:layout_constraintStart_toEndOf="@+id/bttnRestar1"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.762" />
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:id="@+id/floatingActionButton5"
+            android:id="@+id/bttnSumar1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:clickable="true"
@@ -59,14 +60,14 @@
             tools:ignore="SpeakableTextPresentCheck" />
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:id="@+id/floatingActionButton6"
+            android:id="@+id/bttnRestar1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:clickable="true"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/txtCantidadProducto"
-            app:layout_constraintStart_toEndOf="@+id/txtPrecioEmpanadaItem"
-            app:layout_constraintTop_toBottomOf="@+id/txtTituloEmpanadaItem"
+            app:layout_constraintStart_toEndOf="@+id/txtPrecioEmpanadaSelec"
+            app:layout_constraintTop_toBottomOf="@+id/txtTituloEmpanadaSelec"
             app:srcCompat="@drawable/ic_baseline_exposure_neg_1_24"
             tools:ignore="SpeakableTextPresentCheck" />
 

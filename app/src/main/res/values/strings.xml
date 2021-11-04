@@ -21,4 +21,5 @@
     <string name="name_carrito">Mi Carrito</string>
     <string name="name_historial">Mi Carrito</string>
     <string name="name_datos_personales">Datos Personales</string>
+    <string name="cantidad_producto">0</string>
 </resources>

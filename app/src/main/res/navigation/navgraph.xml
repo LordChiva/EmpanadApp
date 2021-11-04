@@ -9,7 +9,11 @@
         android:id="@+id/empanadaFragment"
         android:name="com.proyectoFinal.empanadApp.fragments.EmpanadaFragment"
         android:label="empanada_fragment"
-        tools:layout="@layout/empanada_fragment" />
+        tools:layout="@layout/empanada_fragment" >
+        <action
+            android:id="@+id/action_empanadaFragment_to_carritoFragment"
+            app:destination="@id/carritoFragment" />
+    </fragment>
     <fragment
         android:id="@+id/userFragment"
         android:name="com.proyectoFinal.empanadApp.fragments.UserFragment"

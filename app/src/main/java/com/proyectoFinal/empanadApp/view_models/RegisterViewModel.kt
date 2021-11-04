@@ -31,32 +31,10 @@ class RegisterViewModel : ViewModel() {
     val db = Firebase.firestore
     private lateinit var auth: FirebaseAuth;
 
-
     fun crearUsuario(nombre : String, apellido : String, dni : String, telefono : String,
                 direccion : String, email : String, contrasenia : String){
         var usuario : Cliente = Cliente(nombre, apellido, dni, telefono, direccion, email,
                                         contrasenia)
         db.collection("Usuarios").add(usuario)
     }
-
-    /*fun crearCuenta(email : String, pass : String){
-        FirebaseAuth.getInstance().createUserWithEmailAndPassword(email, pass).addOnCompleteListener()
-
-            if (){
-
-            } else {
-
-            }
-
-
-
-        /*auth = Firebase.auth
-        if (RegisterFragment.nombre != null) {
-            var usuario : Cliente = Cliente(RegisterFragment.nombre)
-
-            //db.collection("usuarios").document(usuario.nombre).set(usuario)
-
-            db.collection("usuarios").add(usuario)
-        }*/
-        }*/
-    }
+}
