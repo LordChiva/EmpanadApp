@@ -1,7 +1,7 @@
 package com.proyectoFinal.empanadApp.fragments
 
 import androidx.lifecycle.ViewModelProvider
-import android.os.Bundle
+
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -11,9 +11,13 @@ import android.widget.EditText
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.navigation.findNavController
 import com.google.android.material.snackbar.Snackbar
+import com.google.firebase.auth.FirebaseAuth
 import com.proyectoFinal.empanadApp.MainActivity
 import com.proyectoFinal.empanadApp.R
 import com.proyectoFinal.empanadApp.view_models.LogInViewModel
+import android.content.ContentValues.TAG
+import android.os.Bundle
+import android.util.Log
 
 
 class LogInFragment : Fragment() {
@@ -29,6 +33,7 @@ class LogInFragment : Fragment() {
     lateinit var txtUser: EditText
     lateinit var txtPass: EditText
     private lateinit var root_layout: ConstraintLayout
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -52,8 +57,17 @@ class LogInFragment : Fragment() {
             if (txtUser.length() < 1 && txtPass.length() < 1){
                 Snackbar.make(root_layout, "Error: Campos faltantes o erroneos", Snackbar.LENGTH_SHORT)
                     .show()
-            } else {
-                (activity as MainActivity).logIn()
+            } else {if (txtUser.text.isNotEmpty() && txtPass.text.isNotEmpty()) {
+                FirebaseAuth.getInstance()
+                    .signInWithEmailAndPassword(
+                        txtUser.text.toString(),
+                        txtPass.text.toString()
+                    ).addOnCompleteListener {
+
+                        if (it.isSuccessful) {
+                            (activity as MainActivity).logIn()
+                        } }}
+
             }
             /*val action1 = LogInFragmentDirections.actionLogInFragmentToEmpanadaFragment()
                        v.findNavController().navigate(action1)*/

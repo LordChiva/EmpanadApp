@@ -3,6 +3,8 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/54116/Desktop/EMPANADAPP ULTIMO/EmpanadApp/app/src/main/res/layout/datos_personales_fragment.xml" value="0.1" />
+        <entry key="..\:/Users/54116/Desktop/EMPANADAPP ULTIMO/EmpanadApp/app/src/main/res/layout/register_fragment.xml" value="0.1" />
         <entry key="..\:/Users/Martin/AndroidStudioProjects/EmpanadApp/app/src/main/res/layout/activity_empanad_app.xml" value="0.18" />
         <entry key="..\:/Users/Martin/AndroidStudioProjects/EmpanadApp/app/src/main/res/layout/activity_login.xml" value="0.20416666666666666" />
         <entry key="..\:/Users/Martin/AndroidStudioProjects/EmpanadApp/app/src/main/res/layout/activity_main.xml" value="0.20416666666666666" />
@@ -20,7 +22,7 @@
       </map>
     </option>
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_1_8" default="true" project-jdk-name="1.8" project-jdk-type="JavaSDK">
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="11" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>
   <component name="ProjectType">
