@@ -30,7 +30,12 @@
         android:id="@+id/carritoFragment"
         android:name="com.proyectoFinal.empanadApp.fragments.CarritoFragment"
         android:label="carrito_fragment"
-        tools:layout="@layout/carrito_fragment" />
+        tools:layout="@layout/carrito_fragment" >
+        <argument
+            android:name="empanadaSeleccionada"
+            app:argType="com.proyectoFinal.empanadApp.entities.Producto"
+            app:nullable="true" />
+    </fragment>
     <fragment
         android:id="@+id/historialDeComprasFragment"
         android:name="com.proyectoFinal.empanadApp.fragments.HistorialDeComprasFragment"

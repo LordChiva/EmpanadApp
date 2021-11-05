@@ -44,7 +44,7 @@ class EmpanadaFragment : Fragment() {
     }
 
     override fun onStart() {
-            super.onStart()
+        super.onStart()
         docRef.get()
             .addOnSuccessListener {
                 for (producto in it) {
@@ -66,6 +66,7 @@ class EmpanadaFragment : Fragment() {
     private fun onItemClick(position: Int){
         val action1 = EmpanadaFragmentDirections
                 .actionEmpanadaFragmentToCarritoFragment(productos[position])
+        Log.d("Test",action1.toString())
                    v.findNavController().navigate(action1)
         //Snackbar.make(v,productos[position].descripcion, Snackbar.LENGTH_SHORT).show()
     }

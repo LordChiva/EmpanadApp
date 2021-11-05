@@ -57,7 +57,8 @@ class LogInFragment : Fragment() {
             if (txtUser.length() < 1 && txtPass.length() < 1){
                 Snackbar.make(root_layout, "Error: Campos faltantes o erroneos", Snackbar.LENGTH_SHORT)
                     .show()
-            } else {if (txtUser.text.isNotEmpty() && txtPass.text.isNotEmpty()) {
+            } else {
+                if (txtUser.text.isNotEmpty() && txtPass.text.isNotEmpty()) {
                 FirebaseAuth.getInstance()
                     .signInWithEmailAndPassword(
                         txtUser.text.toString(),
@@ -66,11 +67,14 @@ class LogInFragment : Fragment() {
 
                         if (it.isSuccessful) {
                             (activity as MainActivity).logIn()
-                        } }}
+                        }
+                    }
+                    .addOnFailureListener { exception ->
+                        Log.d("Test", "get failed with ", exception)
+                    }}
+
 
             }
-            /*val action1 = LogInFragmentDirections.actionLogInFragmentToEmpanadaFragment()
-                       v.findNavController().navigate(action1)*/
         }
 
         bttnRegistrarse.setOnClickListener {

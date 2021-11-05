@@ -6,10 +6,6 @@
         android:icon="@drawable/ic_baseline_home_24"
         android:title="Home" />
     <item
-        android:id="@+id/carritoFragment"
-        android:icon="@drawable/ic_baseline_shopping_cart_24"
-        android:title="Carrito" />
-    <item
         android:id="@+id/userFragment"
         android:icon="@drawable/ic_baseline_account_circle_24"
         android:title="User"/>
