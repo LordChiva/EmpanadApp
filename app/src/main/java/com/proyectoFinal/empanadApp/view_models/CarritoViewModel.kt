@@ -1,21 +1,28 @@
 package com.proyectoFinal.empanadApp.view_models
 
-import android.util.Log
-import android.view.View
-import androidx.core.content.ContentProviderCompat.requireContext
 import androidx.lifecycle.ViewModel
-import androidx.recyclerview.widget.RecyclerView
+import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.ktx.firestore
-import com.google.firebase.firestore.ktx.toObject
-import com.google.firebase.firestore.ktx.toObjects
 import com.google.firebase.ktx.Firebase
-import com.proyectoFinal.empanadApp.adapters.EmpanadaAdapter
-import com.proyectoFinal.empanadApp.entities.Cliente
+import com.proyectoFinal.empanadApp.entities.Pedido
 import com.proyectoFinal.empanadApp.entities.Producto
-import com.proyectoFinal.empanadApp.fragments.CarritoFragment
-import com.proyectoFinal.empanadApp.fragments.CarritoFragmentArgs
+import java.time.LocalDateTime
 
 class CarritoViewModel : ViewModel() {
+    val db = Firebase.firestore
+    private lateinit var auth: FirebaseAuth;
+
+    fun crearPedido(
+        fecha: LocalDateTime, IDCliente: String, importeTotal: Double,
+        detalleCompra: MutableList<Producto>
+    ){
+
+        var pedido : Pedido = Pedido(fecha, IDCliente, importeTotal, detalleCompra)
+        db.collection("Pedidos").add(pedido)
+    }
+
+
+
     /*private lateinit var viewModel: CarritoViewModel
     lateinit var v: View
     lateinit var recycler: RecyclerView

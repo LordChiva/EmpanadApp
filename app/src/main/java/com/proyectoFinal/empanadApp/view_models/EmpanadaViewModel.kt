@@ -16,9 +16,7 @@ import com.proyectoFinal.empanadApp.entities.Producto
 import com.proyectoFinal.empanadApp.fragments.EmpanadaFragmentDirections
 
 class EmpanadaViewModel : ViewModel() {
-
-    /*private lateinit var viewModel: EmpanadaViewModel
-    lateinit var v: View
+    /*lateinit var v: View
     lateinit var recycler: RecyclerView
     private var productos: MutableList<Producto> = arrayListOf()
     private val db = Firebase.firestore
@@ -46,8 +44,5 @@ class EmpanadaViewModel : ViewModel() {
             .actionEmpanadaFragmentToCarritoFragment(productos[position])
         v.findNavController().navigate(action1)
         //Snackbar.make(v,productos[position].descripcion, Snackbar.LENGTH_SHORT).show()
-    }
-
-
-     */
+    }*/
 }

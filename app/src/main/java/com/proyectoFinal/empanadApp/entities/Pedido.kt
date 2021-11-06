@@ -1,12 +1,11 @@
 package com.proyectoFinal.empanadApp.entities
 
-import java.util.*
+import java.time.LocalDateTime
 
-class Pedido (var IDPedido: String,
-              var fecha: Date,
-              var IDCliente: String,
-              var IDProducto: String,
-              var importe: Double) {
-    /*metodo de pago |tarjeta|efectivo|trasferencia|
-    * direccion de entrega*/
+class Pedido(
+    var fecha: LocalDateTime,
+    var IDCliente: String,
+    var importeTotal: Double,
+    var detalleCompra: MutableList<Producto>
+              /*var detalleCompra : MutableList<ItemCompra>*/) {
 }

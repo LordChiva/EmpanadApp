@@ -1,5 +1,6 @@
 package com.proyectoFinal.empanadApp.fragments
 
+import android.os.Build
 import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
 import android.util.Log
@@ -9,21 +10,20 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.TextView
-import androidx.core.content.ContentProviderCompat
+import androidx.annotation.RequiresApi
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.google.android.material.floatingactionbutton.FloatingActionButton
-import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.firestore.ktx.toObject
 import com.google.firebase.ktx.Firebase
 import com.proyectoFinal.empanadApp.R
 import com.proyectoFinal.empanadApp.adapters.CarritoAdapter
-import com.proyectoFinal.empanadApp.adapters.EmpanadaAdapter
-import com.proyectoFinal.empanadApp.entities.Cliente
 import com.proyectoFinal.empanadApp.entities.Producto
+import com.proyectoFinal.empanadApp.repository.CarritoRepository
 import com.proyectoFinal.empanadApp.view_models.CarritoViewModel
-import kotlinx.parcelize.Parcelize
+import java.text.SimpleDateFormat
+import java.time.LocalDateTime
+import java.util.*
 
 class CarritoFragment : Fragment() {
 
@@ -34,9 +34,15 @@ class CarritoFragment : Fragment() {
     private lateinit var viewModel: CarritoViewModel
     lateinit var v: View
     lateinit var recycler: RecyclerView
-    private var itemSeleccionado: MutableList<Producto> = arrayListOf()
+    private var listaProdSelec: MutableList<Producto> = arrayListOf()
     var empanadaSeleccionada : Producto? = null
-
+    private val carritoRepository = CarritoRepository()
+    private val db = Firebase.firestore
+    private var docRef = db.collection("Productos")
+    lateinit var bttnComprar : Button
+    //val sdf = SimpleDateFormat("dd/M/yyyy hh:mm:ss")
+    //val currentDate = sdf.format(Date())
+    //lateinit var fecha : Date = 11:06:2005
 
 
     override fun onCreateView(
@@ -45,31 +51,54 @@ class CarritoFragment : Fragment() {
     ): View? {
         v = inflater.inflate(R.layout.carrito_fragment, container, false)
         recycler = v.findViewById(R.id.recCarrito)
+        bttnComprar = v.findViewById(R.id.bttnComprar)
+        listaProdSelec.clear()
 
         return v
     }
 
+    @RequiresApi(Build.VERSION_CODES.O)
     override fun onStart() {
         super.onStart()
-
-        var adapter = CarritoAdapter(itemSeleccionado, requireContext()) { pos ->
+        /*val adapter = CarritoAdapter(carritoRepository.getCarritoEmpanadas(), requireContext()) { pos ->
             onItemClick(pos)
         }
-        recycler.adapter = adapter
+        recycler.adapter = adapter*/
+        docRef.get()
+            .addOnSuccessListener {
+                for (producto in it) {
+                    listaProdSelec.add(producto.toObject())
+                }
+                recycler.adapter =
+                    CarritoAdapter(listaProdSelec, requireContext()) { pos ->
+                        onItemClick(pos)
+                    }
+            }
+            .addOnFailureListener { exception ->
+                Log.d("Test", "get failed with ", exception)
+            }
         recycler.setHasFixedSize(true) // Ajusta el recycler a toda la pantalla
         recycler.layoutManager =
             LinearLayoutManager(context) // Coloca de forma lineal los elementos (Uno debajo de otro)
-        empanadaSeleccionada = CarritoFragmentArgs.fromBundle(requireArguments()).empanadaSeleccionada
-        Log.d("TEST!!!!!!!!!!",empanadaSeleccionada.toString())
-        if (empanadaSeleccionada != null) {
-            itemSeleccionado.add(empanadaSeleccionada!!)
-        }
+        //empanadaSeleccionada = CarritoFragmentArgs.fromBundle(requireArguments()).empanadaSeleccionada
+        /*if (empanadaSeleccionada != null) {
+            carritoRepository.addEmpanadas(empanadaSeleccionada!!)
+            Log.d("REPOSITORIO!!!!!!!!!", carritoRepository.getCarritoEmpanadas().toString())
+        }*/
 
-        //itemSeleccionado = viewModel.getProducto()
+        //pedido.setProductos(itemSeleccionado)
+        var date = SimpleDateFormat("2005-11-06").format(Date())
+
+        bttnComprar.setOnClickListener() {
+            viewModel.crearPedido(
+                LocalDateTime.now(),"M10000", 2000.00, listaProdSelec)
+        }
     }
 
     fun onItemClick(position: Int){
         //Snackbar.make(v,itemSeleccionado[position].descripcion, Snackbar.LENGTH_SHORT).show()
+
+
         /*bttnSumarUno.setOnClickListener(){
             cantidad += 1
         }
