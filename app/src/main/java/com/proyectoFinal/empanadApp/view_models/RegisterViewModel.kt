@@ -35,6 +35,7 @@ class RegisterViewModel : ViewModel() {
                      direccion : String, email : String, contrasenia : String){
         var usuario : Cliente = Cliente(nombre, apellido, dni, telefono, direccion, email,
             contrasenia)
-        db.collection("Usuarios").document("uid").set(usuario)
+        //db.collection("Usuarios").document("uid").set(usuario)
+        db.collection("Usuarios").add(usuario)
     }
 }

@@ -29,12 +29,12 @@ class CarritoAdapter (var empanadasList: MutableList<Producto>,
         holder.setCantidadEmpanada("1")
         holder.setBotonMasUno()
         holder.setBotonMenosUno()
-        /*holder.setBotonMasUno().setOnClickListener{
+        holder.setBotonMasUno().setOnClickListener{
             onItemClick(position)
         }
         holder.setBotonMenosUno().setOnClickListener{
             onItemClick(position)
-        }*/
+        }
     }
 
     override fun getItemCount(): Int {

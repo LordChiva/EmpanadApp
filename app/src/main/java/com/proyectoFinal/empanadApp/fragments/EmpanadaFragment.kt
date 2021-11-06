@@ -39,6 +39,7 @@ class EmpanadaFragment : Fragment() {
     ): View? {
         v = inflater.inflate(R.layout.empanada_fragment, container, false)
         recycler = v.findViewById(R.id.recEmpanada)
+        productos.clear()
 
         return v
     }
@@ -64,10 +65,10 @@ class EmpanadaFragment : Fragment() {
     }
 
     private fun onItemClick(position: Int){
-        val action1 = EmpanadaFragmentDirections
+        /*val action1 = EmpanadaFragmentDirections
                 .actionEmpanadaFragmentToCarritoFragment(productos[position])
         Log.d("Test",action1.toString())
-                   v.findNavController().navigate(action1)
+                   v.findNavController().navigate(action1)*/
         //Snackbar.make(v,productos[position].descripcion, Snackbar.LENGTH_SHORT).show()
     }
 

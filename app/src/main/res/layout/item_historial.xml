@@ -15,7 +15,7 @@
             android:layout_height="39dp"
             android:text="TextView"
             android:textSize="16sp"
-            app:layout_constraintBottom_toTopOf="@+id/txtSabor"
+            app:layout_constraintBottom_toTopOf="@+id/txtNombreProductoPedido"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.212"
             app:layout_constraintStart_toStartOf="parent"
@@ -27,14 +27,13 @@
             android:layout_height="31dp"
             android:text="TextView"
             android:textSize="16sp"
-            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintBottom_toTopOf="@+id/txtIDCliente"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/txtSabor"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.506" />
+            app:layout_constraintStart_toEndOf="@+id/txtNombreProductoPedido"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/txtSabor"
+            android:id="@+id/txtNombreProductoPedido"
             android:layout_width="110dp"
             android:layout_height="36dp"
             android:text="TextView"
@@ -54,6 +53,16 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.219"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/txtSabor" />
+            app:layout_constraintTop_toBottomOf="@+id/txtNombreProductoPedido" />
+
+        <TextView
+            android:id="@+id/txtIDCliente"
+            android:layout_width="115dp"
+            android:layout_height="33dp"
+            android:text="TextView"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/txtImporte"
+            app:layout_constraintTop_toBottomOf="@+id/txtCantidad" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.cardview.widget.CardView>

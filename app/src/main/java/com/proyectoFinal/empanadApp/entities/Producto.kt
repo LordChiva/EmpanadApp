@@ -10,6 +10,7 @@ class Producto  () : Parcelable{
     var urlImage: String = ""
     var id: String = ""
     var precio: Double = 0.0
+    var cantidad: Int = 0
 
     constructor(parcel: Parcel) : this() {
         nombre = parcel.readString().toString()
@@ -17,6 +18,7 @@ class Producto  () : Parcelable{
         urlImage = parcel.readString().toString()
         id = parcel.readString().toString()
         precio = parcel.readDouble()
+        cantidad = parcel.readInt()
     }
 
     override fun writeToParcel(parcel: Parcel, flags: Int) {
@@ -25,6 +27,7 @@ class Producto  () : Parcelable{
         parcel.writeString(urlImage)
         parcel.writeString(id)
         parcel.writeDouble(precio)
+        parcel.writeInt(cantidad)
     }
 
     override fun describeContents(): Int {
