@@ -8,4 +8,5 @@ class Pedido(
     var importeTotal: Double,
     var detalleCompra: MutableList<Producto>
               /*var detalleCompra : MutableList<ItemCompra>*/) {
+
 }
