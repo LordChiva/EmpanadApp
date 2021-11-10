@@ -26,14 +26,23 @@ class CarritoAdapter (var empanadasList: MutableList<Producto>,
     override fun onBindViewHolder(holder: CarritoAdapter.CarritoHolder, position: Int) {
         holder.setTituloEmpanadaSeleccionada(empanadasList[position].nombre)
         holder.setPrecioEmpanadaSeleccionada(empanadasList[position].precio)
-        holder.setCantidadEmpanada("1")
-        holder.setBotonMasUno()
-        holder.setBotonMenosUno()
-        holder.setBotonMasUno().setOnClickListener{
-            onItemClick(position)
+        var contador = 0
+        holder.setCantidadEmpanada(contador.toString())
+        holder.getBotonMasUno().setOnClickListener{
+            if (contador < 12) {
+                contador++
+                holder.setCantidadEmpanada(contador.toString())
+            } else {
+                onItemClick(position)
+            }
         }
-        holder.setBotonMenosUno().setOnClickListener{
-            onItemClick(position)
+        holder.getBotonMenosUno().setOnClickListener{
+            if (contador > 0) {
+                contador--
+                holder.setCantidadEmpanada(contador.toString())
+            } else {
+                onItemClick(position)
+            }
         }
     }
 
@@ -42,10 +51,11 @@ class CarritoAdapter (var empanadasList: MutableList<Producto>,
     }
 
     class CarritoHolder (v: View) : RecyclerView.ViewHolder(v) {
-        private var view: View
-        init {
+        private var view: View = v
+        /*init {
             this.view = v
-        }
+        }*/
+        private var contador : Int = 0
 
         fun setTituloEmpanadaSeleccionada(title: String){
             val txt: TextView = view.findViewById(R.id.txtTituloEmpanadaSelec)
@@ -57,17 +67,22 @@ class CarritoAdapter (var empanadasList: MutableList<Producto>,
             txtPrecio.text = precio.toString()
         }
 
-        fun setBotonMasUno(): FloatingActionButton {
+        fun getBotonMasUno(): FloatingActionButton {
             return  view.findViewById(R.id.bttnSumar1)
         }
 
-        fun setBotonMenosUno(): FloatingActionButton {
+        fun getBotonMenosUno(): FloatingActionButton {
             return view.findViewById(R.id.bttnRestar1)
         }
 
         fun setCantidadEmpanada(cantidad: String) {
             val txt: TextView = view.findViewById(R.id.txtCantidadProducto)
             txt.text = cantidad
+        }
+
+        fun getCantidadEmpanada(): String {
+            val txt: TextView = view.findViewById(R.id.txtCantidadProducto)
+            return txt.toString()
         }
     }
 }
