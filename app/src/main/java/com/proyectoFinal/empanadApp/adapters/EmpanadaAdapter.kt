@@ -29,9 +29,6 @@ class EmpanadaAdapter (var empanadasList: MutableList<Producto>,
         holder.setTitle(empanadasList[position].nombre)
         holder.setDescripcion(empanadasList[position].descripcion)
         holder.setPrecio(empanadasList[position].precio)
-        holder.getBttnAdd().setOnClickListener{
-            onItemClick(position)
-        }
         holder.getImage()
         Glide.with(context)
             .load(empanadasList[position].urlImage).into(holder.getImage())
@@ -50,10 +47,6 @@ class EmpanadaAdapter (var empanadasList: MutableList<Producto>,
         fun setTitle(title: String){
             val txt: TextView = view.findViewById(R.id.txtTitleEmpanada)
             txt.text = title
-        }
-
-        fun getBttnAdd() : FloatingActionButton {
-            return view.findViewById(R.id.bttnAgregarAlCarrito)
         }
 
         fun getImage() : ImageView{
