@@ -18,6 +18,10 @@ import com.proyectoFinal.empanadApp.view_models.LogInViewModel
 import android.content.ContentValues.TAG
 import android.os.Bundle
 import android.util.Log
+import com.firebase.ui.auth.util.GoogleApiUtils
+import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.FirebaseDatabase
+
 
 
 class LogInFragment : Fragment() {
@@ -33,6 +37,11 @@ class LogInFragment : Fragment() {
     lateinit var txtUser: EditText
     lateinit var txtPass: EditText
     private lateinit var root_layout: ConstraintLayout
+    private lateinit var dbReference:DatabaseReference
+    private lateinit var database: FirebaseDatabase
+    private lateinit var auth: FirebaseAuth
+
+
 
 
     override fun onCreateView(
