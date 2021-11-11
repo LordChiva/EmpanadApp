@@ -70,6 +70,7 @@ class LogInFragment : Fragment() {
                         }
                     }
                     .addOnFailureListener { exception ->
+                        Snackbar.make(root_layout, "Error: Campos faltantes o erroneos", Snackbar.LENGTH_SHORT)
                         Log.d("Test", "get failed with ", exception)
                     }}
 

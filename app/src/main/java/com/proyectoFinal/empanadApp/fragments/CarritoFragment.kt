@@ -11,8 +11,11 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.TextView
 import androidx.annotation.RequiresApi
+import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.google.android.material.floatingactionbutton.FloatingActionButton
+import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.firestore.ktx.toObject
 import com.google.firebase.ktx.Firebase
@@ -35,14 +38,10 @@ class CarritoFragment : Fragment() {
     lateinit var v: View
     lateinit var recycler: RecyclerView
     private var listaProdSelec: MutableList<Producto> = arrayListOf()
-    var empanadaSeleccionada : Producto? = null
-    private val carritoRepository = CarritoRepository()
     private val db = Firebase.firestore
     private var docRef = db.collection("Productos")
     lateinit var bttnComprar : Button
-    //val sdf = SimpleDateFormat("dd/M/yyyy hh:mm:ss")
-    //val currentDate = sdf.format(Date())
-    //lateinit var fecha : Date = 11:06:2005
+    lateinit var carritoFrameLayout : ConstraintLayout
 
 
     override fun onCreateView(
@@ -50,9 +49,9 @@ class CarritoFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         v = inflater.inflate(R.layout.carrito_fragment, container, false)
+        carritoFrameLayout = v.findViewById(R.id.carritoFrameLayout)
         recycler = v.findViewById(R.id.recCarrito)
         bttnComprar = v.findViewById(R.id.bttnComprar)
-        listaProdSelec.clear()
 
         return v
     }
@@ -87,7 +86,7 @@ class CarritoFragment : Fragment() {
         }*/
 
         //pedido.setProductos(itemSeleccionado)
-        var date = SimpleDateFormat("2005-11-06").format(Date())
+        //var date = SimpleDateFormat("2005-11-06").format(Date())
 
         bttnComprar.setOnClickListener() {
             viewModel.crearPedido(
@@ -95,16 +94,13 @@ class CarritoFragment : Fragment() {
         }
     }
 
-    fun onItemClick(position: Int){
-        //Snackbar.make(v,itemSeleccionado[position].descripcion, Snackbar.LENGTH_SHORT).show()
-
-
-        /*bttnSumarUno.setOnClickListener(){
-            cantidad += 1
+    private fun onItemClick(position: Int){
+        when (position){
+            R.id.bttnSumar1 ->
+                Snackbar.make(v,"Máximo alcanzado", Snackbar.LENGTH_SHORT).show()
+            R.id.bttnRestar1 ->
+                Snackbar.make(v,"Mínimo alcanzado", Snackbar.LENGTH_SHORT).show()
         }
-        bttnRestarUno.setOnClickListener(){
-            cantidad -= 1
-        }*/
 
     }
 
@@ -112,13 +108,6 @@ class CarritoFragment : Fragment() {
         super.onActivityCreated(savedInstanceState)
         viewModel = ViewModelProvider(this).get(CarritoViewModel::class.java)
         // TODO: Use the ViewModel
-    }
-    private operator fun TextView.minusAssign(i: Int) {
-
-    }
-
-    private operator fun TextView.plusAssign(i: Int) {
-
     }
 
 }
