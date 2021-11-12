@@ -29,7 +29,7 @@ class EmpanadaFragment : Fragment() {
     private lateinit var viewModel: EmpanadaViewModel
     lateinit var v: View
     lateinit var recycler: RecyclerView
-    private var productos: MutableList<Producto> = arrayListOf()
+    private var productos: MutableList<Producto> = mutableListOf()
     private val db = Firebase.firestore
     private var docRef = db.collection("Productos")
 

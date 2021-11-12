@@ -6,19 +6,28 @@ import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import com.proyectoFinal.empanadApp.entities.Pedido
 import com.proyectoFinal.empanadApp.entities.Producto
+import java.time.LocalDate
 import java.time.LocalDateTime
+import java.util.*
 
 class CarritoViewModel : ViewModel() {
     val db = Firebase.firestore
     private lateinit var auth: FirebaseAuth;
 
     fun crearPedido(
-        fecha: LocalDateTime, IDCliente: String, importeTotal: Double,
-        detalleCompra: MutableList<Producto>
-    ){
+        fecha: LocalDate, IDCliente: String, importeTotal: Double,
+        detalleCompra: MutableList<Producto>){
 
         var pedido : Pedido = Pedido(fecha, IDCliente, importeTotal, detalleCompra)
         db.collection("Pedidos").add(pedido)
+    }
+
+    fun importeTotal(productos: MutableList<Producto>): Double {
+        var importeFinal = 0.0
+        for (item in productos) {
+            importeFinal += item.precio * item.cantidad
+        }
+        return importeFinal
     }
 
 

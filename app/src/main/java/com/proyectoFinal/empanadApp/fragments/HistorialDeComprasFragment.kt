@@ -30,7 +30,7 @@ class HistorialDeComprasFragment : Fragment() {
     lateinit var recycler: RecyclerView
     private val db = Firebase.firestore
     private var docRef = db.collection("Pedidos")
-    private var listaPedidos: MutableList<Pedido> = arrayListOf()
+    private var listaPedidos: MutableList<Pedido> = mutableListOf()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,

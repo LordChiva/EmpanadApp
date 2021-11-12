@@ -32,7 +32,6 @@ class CarritoAdapter (var empanadasList: MutableList<Producto>,
             if (contador < 12) {
                 contador++
                 holder.setCantidadEmpanada(contador.toString())
-            } else {
                 onItemClick(position)
             }
         }
@@ -40,7 +39,6 @@ class CarritoAdapter (var empanadasList: MutableList<Producto>,
             if (contador > 0) {
                 contador--
                 holder.setCantidadEmpanada(contador.toString())
-            } else {
                 onItemClick(position)
             }
         }

@@ -48,6 +48,9 @@ class UserFragment : Fragment() {
                 val action1 = UserFragmentDirections.actionUserFragmentToDatosPersonalesFragment()
                 v.findNavController().navigate(action1)
             }
+            bttnCerrarSesion.setOnClickListener {
+
+            }
         }
 
         override fun onActivityCreated(savedInstanceState: Bundle?) {

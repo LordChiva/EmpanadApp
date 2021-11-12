@@ -10,6 +10,7 @@ import androidx.annotation.RequiresApi
 import androidx.recyclerview.widget.RecyclerView
 import com.proyectoFinal.empanadApp.R
 import com.proyectoFinal.empanadApp.entities.Pedido
+import java.time.LocalDate
 import java.time.LocalDateTime
 
 class HistorialAdapter (var pedidosList: MutableList<Pedido>,
@@ -28,9 +29,7 @@ class HistorialAdapter (var pedidosList: MutableList<Pedido>,
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onBindViewHolder(holder: HistorialHolder, position: Int) {
         holder.setFecha(pedidosList[position].fecha)
-        holder.setNombreProductoPedido(pedidosList[position].detalleCompra[position].descripcion)
         holder.setImporte(pedidosList[position].importeTotal)
-        holder.setCantidadPedido("12")
         holder.setIDCliente(pedidosList[position].IDCliente)
     }
 
@@ -45,24 +44,14 @@ class HistorialAdapter (var pedidosList: MutableList<Pedido>,
         }
 
         @RequiresApi(Build.VERSION_CODES.O)
-        fun setFecha(fecha: LocalDateTime){
+        fun setFecha(fecha: LocalDate){
             val txt: TextView = view.findViewById(R.id.txtFecha)
             txt.text = fecha.toString()
-        }
-
-        fun setNombreProductoPedido(title: String){
-            val txt: TextView = view.findViewById(R.id.txtNombreProductoPedido)
-            txt.text = title
         }
 
         fun setIDCliente(idCliente: String){
             val txt: TextView = view.findViewById(R.id.txtIDCliente)
             txt.text = idCliente
-        }
-
-        fun setCantidadPedido(cantidad: String) {
-            val txt: TextView = view.findViewById(R.id.txtCantidadProducto)
-            txt.text = cantidad
         }
 
         fun setImporte(importe: Double) {
