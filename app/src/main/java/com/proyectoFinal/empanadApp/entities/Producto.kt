@@ -44,5 +44,12 @@ class Producto  () : Parcelable{
         }
     }
 
+    fun sumarCantidad() {
+        this.cantidad = this.cantidad + 1
+    }
+
+    fun restarCantidad() {
+        this.cantidad = this.cantidad - 1
+    }
 
 }

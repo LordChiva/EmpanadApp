@@ -16,5 +16,19 @@ class EmpanadAppActivity : AppCompatActivity() {
         navHostFragment = supportFragmentManager.findFragmentById(R.id.main_navhost) as NavHostFragment
         bottomNavView = findViewById(R.id.bottom_bar)
         NavigationUI.setupWithNavController(bottomNavView, navHostFragment.navController)
+
+        /*navView.setNavigationItemSelectedListener {
+            when (it.itemId) {
+                R.id.signOut -> {
+                    FirebaseAuth.getInstance().signOut()
+                    val intent = Intent(applicationContext, MainActivity::class.java)
+                    startActivity(intent)
+                    finish()
+                    true
+                }
+                else -> false
+            }
+        }*/
+
     }
 }
