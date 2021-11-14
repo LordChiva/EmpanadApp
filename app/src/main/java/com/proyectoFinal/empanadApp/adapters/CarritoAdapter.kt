@@ -12,7 +12,7 @@ import com.proyectoFinal.empanadApp.entities.Producto
 
 class CarritoAdapter (var empanadasList: MutableList<Producto>,
                       var context: Context,
-                      val onItemClick: (Int) -> Unit)
+                      val onItemClick: (Int, String) -> Unit)
     : RecyclerView.Adapter<CarritoAdapter.CarritoHolder>() {
 
     override fun onCreateViewHolder(
@@ -29,17 +29,19 @@ class CarritoAdapter (var empanadasList: MutableList<Producto>,
         var contador = 0
         holder.setCantidadEmpanada(contador.toString())
         holder.getBotonMasUno().setOnClickListener{
+            var sumar =  "suma"
             if (contador < 12) {
                 contador++
                 holder.setCantidadEmpanada(contador.toString())
-                onItemClick(position)
+                onItemClick(position, sumar)
             }
         }
         holder.getBotonMenosUno().setOnClickListener{
+            var restar = "resta"
             if (contador > 0) {
                 contador--
                 holder.setCantidadEmpanada(contador.toString())
-                onItemClick(position)
+                onItemClick(position, restar)
             }
         }
     }

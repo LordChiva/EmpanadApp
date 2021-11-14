@@ -83,8 +83,8 @@ class CarritoFragment : Fragment() {
                     listaProdSelec.add(producto.toObject())
                 }
                 recycler.adapter =
-                    CarritoAdapter(listaProdSelec, requireContext()) { pos ->
-                        onItemClick(pos)
+                    CarritoAdapter(listaProdSelec, requireContext()) { pos, op ->
+                        onItemClick(pos, op)
                     }
             }
             .addOnFailureListener { exception ->
@@ -101,11 +101,11 @@ class CarritoFragment : Fragment() {
 
         //pedido.setProductos(itemSeleccionado)
         //var date = SimpleDateFormat("2005-11-06").format(Date())
-        importeFinal = viewModel.importeTotal(listaProdSelec)
         bttnComprar.setOnClickListener() {
             auth = FirebaseAuth.getInstance()
             val user: FirebaseUser? = auth.currentUser
             val uid = user?.uid
+            importeFinal = viewModel.importeTotal(listaProdSelec)
             if (uid != null) {
                 viewModel.crearPedido("2021-11-14",uid, importeFinal, listaProdSelec)
                 Snackbar.make(v,"Creación de pedido exitosa", Snackbar.LENGTH_SHORT).show()
@@ -115,14 +115,14 @@ class CarritoFragment : Fragment() {
         }
     }
 
-    private fun onItemClick(position: Int){
+    private fun onItemClick(position: Int, operacion: String){
 
-        when (id){
+        when (operacion){
 
-            R.id.bttnSumar1 ->
+            "suma" ->
                 listaProdSelec[position].sumarCantidad()
                 //Snackbar.make(v,"Máximo alcanzado", Snackbar.LENGTH_SHORT).show()
-            R.id.bttnRestar1 ->
+            "resta" ->
                 listaProdSelec[position].restarCantidad()
                 //Snackbar.make(v,"Mínimo alcanzado", Snackbar.LENGTH_SHORT).show()
         }
