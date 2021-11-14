@@ -30,11 +30,13 @@ import com.proyectoFinal.empanadApp.entities.Producto
 import com.proyectoFinal.empanadApp.repository.CarritoRepository
 import com.proyectoFinal.empanadApp.view_models.CarritoViewModel
 import java.text.SimpleDateFormat
+import java.time.Instant
 import java.time.Instant.now
 import java.time.LocalDateTime
 import java.time.LocalDateTime.now
 import java.util.*
 import java.time.LocalDate
+
 
 class CarritoFragment : Fragment() {
 
@@ -105,7 +107,7 @@ class CarritoFragment : Fragment() {
             val user: FirebaseUser? = auth.currentUser
             val uid = user?.uid
             if (uid != null) {
-                viewModel.crearPedido(LocalDate.now(),uid, importeFinal, listaProdSelec)
+                viewModel.crearPedido("2021-11-14",uid, importeFinal, listaProdSelec)
                 Snackbar.make(v,"Creación de pedido exitosa", Snackbar.LENGTH_SHORT).show()
             } else {
                 Snackbar.make(v,"Error en la creación del pedido", Snackbar.LENGTH_SHORT).show()

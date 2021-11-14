@@ -10,8 +10,7 @@ import androidx.annotation.RequiresApi
 import androidx.recyclerview.widget.RecyclerView
 import com.proyectoFinal.empanadApp.R
 import com.proyectoFinal.empanadApp.entities.Pedido
-import java.time.LocalDate
-import java.time.LocalDateTime
+import java.time.Instant
 
 class HistorialAdapter (var pedidosList: MutableList<Pedido>,
                         var context: Context,
@@ -44,9 +43,9 @@ class HistorialAdapter (var pedidosList: MutableList<Pedido>,
         }
 
         @RequiresApi(Build.VERSION_CODES.O)
-        fun setFecha(fecha: LocalDate){
+        fun setFecha(fecha: String){
             val txt: TextView = view.findViewById(R.id.txtFecha)
-            txt.text = fecha.toString()
+            txt.text = fecha
         }
 
         fun setIDCliente(idCliente: String){
