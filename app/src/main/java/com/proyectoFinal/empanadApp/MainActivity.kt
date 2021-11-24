@@ -5,11 +5,12 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
+import androidx.fragment.app.FragmentTransaction
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.ktx.Firebase
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.ktx.auth
-
+import com.proyectoFinal.empanadApp.fragments.CarritoFragment
 
 
 class MainActivity : AppCompatActivity() {
@@ -48,5 +49,12 @@ class MainActivity : AppCompatActivity() {
         finish()
     }
 
+    /*fun onBackPressed() {
+        var ft : FragmentTransaction = getSupportFragmentManager().beginTransaction()
+        ft.replace(this, CarritoFragment)
+        ft.addToBackStack(null)
+        ft.commit()
+    }*/
 
-    }
+
+}

@@ -15,7 +15,6 @@ class Pedido(var fecha: String,
              var IDCliente: String,
              var importeTotal: Double,
              var detalleCompra: MutableList<Producto>){
-    @RequiresApi(Build.VERSION_CODES.O)
     constructor(): this("", "", 0.0, mutableListOf())
 
 }

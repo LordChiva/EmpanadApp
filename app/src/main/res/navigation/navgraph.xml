@@ -9,11 +9,7 @@
         android:id="@+id/empanadaFragment"
         android:name="com.proyectoFinal.empanadApp.fragments.EmpanadaFragment"
         android:label="empanada_fragment"
-        tools:layout="@layout/empanada_fragment" >
-        <action
-            android:id="@+id/action_empanadaFragment_to_carritoFragment"
-            app:destination="@id/carritoFragment" />
-    </fragment>
+        tools:layout="@layout/empanada_fragment" />
     <fragment
         android:id="@+id/userFragment"
         android:name="com.proyectoFinal.empanadApp.fragments.UserFragment"
@@ -35,6 +31,9 @@
             android:name="empanadaSeleccionada"
             app:argType="com.proyectoFinal.empanadApp.entities.Producto"
             app:nullable="true" />
+        <action
+            android:id="@+id/action_carritoFragment_to_confirmacionPedidoFragment"
+            app:destination="@id/confirmacionPedidoFragment" />
     </fragment>
     <fragment
         android:id="@+id/historialDeComprasFragment"
@@ -46,4 +45,14 @@
         android:name="com.proyectoFinal.empanadApp.fragments.DatosPersonalesFragment"
         android:label="datos_personales_fragment"
         tools:layout="@layout/datos_personales_fragment" />
+    <fragment
+        android:id="@+id/confirmacionPedidoFragment"
+        android:name="com.proyectoFinal.empanadApp.fragments.ConfirmacionPedidoFragment"
+        android:label="confirmacion_pedido_fragment"
+        tools:layout="@layout/confirmacion_pedido_fragment" >
+        <argument
+            android:name="confirmacionPedido"
+            app:argType="com.proyectoFinal.empanadApp.entities.PreCompra"
+            app:nullable="true" />
+    </fragment>
 </navigation>
