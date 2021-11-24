@@ -31,6 +31,16 @@ class CarritoViewModel : ViewModel() {
         return importeFinal
     }
 
+    fun cantidadEmpanadas(listaEmpanadas: MutableList<Producto>): Int{
+        var cant = 0
+        for (item in listaEmpanadas) {
+            if (item.cantidad != 0){
+                cant += item.cantidad
+            }
+        }
+        return cant
+    }
+
 
 
     /*private lateinit var viewModel: CarritoViewModel

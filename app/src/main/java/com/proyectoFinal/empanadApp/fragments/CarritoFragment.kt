@@ -12,6 +12,7 @@ import android.widget.Button
 import android.widget.TextView
 import androidx.annotation.RequiresApi
 import androidx.constraintlayout.widget.ConstraintLayout
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.floatingactionbutton.FloatingActionButton
@@ -26,6 +27,7 @@ import com.google.firebase.ktx.Firebase
 import com.ibm.icu.text.CurrencyMetaInfo.CurrencyFilter.now
 import com.proyectoFinal.empanadApp.R
 import com.proyectoFinal.empanadApp.adapters.CarritoAdapter
+import com.proyectoFinal.empanadApp.entities.PreCompra
 import com.proyectoFinal.empanadApp.entities.Producto
 import com.proyectoFinal.empanadApp.repository.CarritoRepository
 import com.proyectoFinal.empanadApp.view_models.CarritoViewModel
@@ -102,7 +104,7 @@ class CarritoFragment : Fragment() {
         //pedido.setProductos(itemSeleccionado)
         //var date = SimpleDateFormat("2005-11-06").format(Date())
         bttnComprar.setOnClickListener() {
-            auth = FirebaseAuth.getInstance()
+            /*auth = FirebaseAuth.getInstance()
             val user: FirebaseUser? = auth.currentUser
             val uid = user?.uid
             importeFinal = viewModel.importeTotal(listaProdSelec)
@@ -111,7 +113,13 @@ class CarritoFragment : Fragment() {
                 Snackbar.make(v,"Creación de pedido exitosa", Snackbar.LENGTH_SHORT).show()
             } else {
                 Snackbar.make(v,"Error en la creación del pedido", Snackbar.LENGTH_SHORT).show()
-            }
+            }*/
+            importeFinal = viewModel.importeTotal(listaProdSelec)
+            val pedido : PreCompra = PreCompra ("2021-11-14", importeFinal, viewModel.cantidadEmpanadas(listaProdSelec))
+            val action1 = CarritoFragmentDirections
+                .actionCarritoFragmentToConfirmacionPedidoFragment(pedido)
+            Log.d("Test",action1.toString())
+            v.findNavController().navigate(action1)
         }
     }
 

@@ -13,7 +13,6 @@ import com.google.firebase.firestore.ktx.toObject
 import com.google.firebase.ktx.Firebase
 import com.proyectoFinal.empanadApp.adapters.EmpanadaAdapter
 import com.proyectoFinal.empanadApp.entities.Producto
-import com.proyectoFinal.empanadApp.fragments.EmpanadaFragmentDirections
 
 class EmpanadaViewModel : ViewModel() {
     /*lateinit var v: View
