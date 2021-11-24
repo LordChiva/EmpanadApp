@@ -23,4 +23,5 @@
     <string name="name_datos_personales">Datos Personales</string>
     <string name="cantidad_producto">0</string>
     <string name="button_compra">Comprar</string>
+    <string name="name_productosHistorial">Productos Seleccionados</string>
 </resources>
