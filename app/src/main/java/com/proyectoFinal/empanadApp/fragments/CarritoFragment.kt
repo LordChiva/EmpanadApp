@@ -11,6 +11,8 @@ import android.view.ViewGroup
 import android.widget.Button
 import androidx.annotation.RequiresApi
 import androidx.constraintlayout.widget.ConstraintLayout
+import androidx.fragment.app.activityViewModels
+import androidx.lifecycle.LiveData
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -46,7 +48,8 @@ class CarritoFragment : Fragment() {
     lateinit var bttnComprar : Button
     lateinit var carritoFrameLayout : ConstraintLayout
     var importeFinal : Double = 0.0
-    private var confPedido : Boolean = false
+    private val sharedViewModel: CarritoViewModel by activityViewModels()
+
 
 
     override fun onCreateView(
@@ -87,9 +90,9 @@ class CarritoFragment : Fragment() {
         bttnComprar.setOnClickListener() {
             importeFinal = viewModel.importeTotal(listaProdSelec)
             val pedido : PreCompra = PreCompra (Instant.now().toString(), importeFinal, viewModel.cantidadEmpanadas(listaProdSelec))
+
             val action1 = CarritoFragmentDirections
                 .actionCarritoFragmentToConfirmacionPedidoFragment(pedido)
-            Log.d("CARRITO PRODUCTOS", listaProdSelec.toString())
             v.findNavController().navigate(action1)
         }
 
@@ -136,7 +139,11 @@ class CarritoFragment : Fragment() {
         super.onActivityCreated(savedInstanceState)
         viewModel = ViewModelProvider(this).get(CarritoViewModel::class.java)
         // TODO: Use the ViewModel
-        viewModel.mutableLiveData.value = listaProdSelec
+        sharedViewModel.setProductos(listaProdSelec)
+        Log.d("VIEWMODEL LISTA", viewModel.getItem().toString())
+        //viewModel.mutableLiveData.value = listaProdSelec
+        /*viewModel.setItem(listaProdSelec)
+        Log.d("VIEWMODEL LISTA", viewModel.getItem().toString())*/
     }
 
 }

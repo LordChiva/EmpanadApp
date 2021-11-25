@@ -1,6 +1,7 @@
 package com.proyectoFinal.empanadApp.view_models
 
 import android.content.ClipData
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.google.firebase.auth.FirebaseAuth
@@ -16,9 +17,16 @@ import java.util.*
 class CarritoViewModel : ViewModel() {
     val db = Firebase.firestore
     private lateinit var auth: FirebaseAuth;
-    var mutableLiveData:MutableLiveData<MutableList<Producto>> = MutableLiveData()
+    private var _productos = MutableLiveData<MutableList<Producto>>()
+    val productos : LiveData<MutableList<Producto>> = _productos
 
+    fun getItem(): MutableList<Producto>? {
+        return productos.value
+    }
 
+    fun setProductos(prodSeleccionados: MutableList<Producto>) {
+        _productos.value = prodSeleccionados
+    }
 
     fun crearPedido(
             fecha: String, IDCliente: String, importeTotal: Double,

@@ -11,6 +11,7 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.TextView
 import androidx.annotation.RequiresApi
+import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
 import androidx.navigation.findNavController
 import com.google.android.material.snackbar.Snackbar
@@ -44,6 +45,7 @@ class ConfirmacionPedidoFragment : Fragment() {
     private lateinit var auth: FirebaseAuth
     private lateinit var dbReference: DatabaseReference
     private lateinit var database: FirebaseDatabase
+    private val sharedViewModel: CarritoViewModel by activityViewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -94,11 +96,14 @@ class ConfirmacionPedidoFragment : Fragment() {
         super.onActivityCreated(savedInstanceState)
         viewModel = ViewModelProvider(this).get(ConfirmacionPedidoViewModel::class.java)
         // TODO: Use the ViewModel
-        vModel = ViewModelProvider(this).get(CarritoViewModel::class.java)
-        Log.d("PRODUCTOS VIEWMODEL", vModel.mutableLiveData.value.toString())
-        vModel.mutableLiveData.observe(viewLifecycleOwner, Observer {
+        vModel = ViewModelProvider(requireActivity()).get(CarritoViewModel::class.java)
+        Log.d("PRODUCTOS VIEWMODEL", prodCompra.toString())
+        prodCompra = vModel.getItem()!!
+
+
+        /*vModel.mutableLiveData.observe(viewLifecycleOwner, Observer {
             prodCompra = vModel.mutableLiveData.value!!
-        })
+        })*/
     }
 
 }
