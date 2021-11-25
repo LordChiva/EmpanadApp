@@ -9,35 +9,23 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
-import android.widget.TextView
 import androidx.annotation.RequiresApi
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.google.android.material.floatingactionbutton.FloatingActionButton
-import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.firestore.ktx.toObject
 import com.google.firebase.ktx.Firebase
-import com.ibm.icu.text.CurrencyMetaInfo.CurrencyFilter.now
 import com.proyectoFinal.empanadApp.R
 import com.proyectoFinal.empanadApp.adapters.CarritoAdapter
 import com.proyectoFinal.empanadApp.entities.PreCompra
 import com.proyectoFinal.empanadApp.entities.Producto
-import com.proyectoFinal.empanadApp.repository.CarritoRepository
 import com.proyectoFinal.empanadApp.view_models.CarritoViewModel
-import java.text.SimpleDateFormat
 import java.time.Instant
-import java.time.Instant.now
-import java.time.LocalDateTime
-import java.time.LocalDateTime.now
-import java.util.*
-import java.time.LocalDate
 
 
 class CarritoFragment : Fragment() {
@@ -58,16 +46,19 @@ class CarritoFragment : Fragment() {
     lateinit var bttnComprar : Button
     lateinit var carritoFrameLayout : ConstraintLayout
     var importeFinal : Double = 0.0
+    private var confPedido : Boolean = false
 
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
+
     ): View? {
         v = inflater.inflate(R.layout.carrito_fragment, container, false)
         carritoFrameLayout = v.findViewById(R.id.carritoFrameLayout)
         recycler = v.findViewById(R.id.recCarrito)
         bttnComprar = v.findViewById(R.id.bttnComprar)
+
 
         return v
     }
@@ -75,10 +66,6 @@ class CarritoFragment : Fragment() {
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onStart() {
         super.onStart()
-        /*val adapter = CarritoAdapter(carritoRepository.getCarritoEmpanadas(), requireContext()) { pos ->
-            onItemClick(pos)
-        }
-        recycler.adapter = adapter*/
         docRef.get()
             .addOnSuccessListener {
                 for (producto in it) {
@@ -92,41 +79,50 @@ class CarritoFragment : Fragment() {
             .addOnFailureListener { exception ->
                 Log.d("Test", "get failed with ", exception)
             }
+
         recycler.setHasFixedSize(true) // Ajusta el recycler a toda la pantalla
         recycler.layoutManager =
             LinearLayoutManager(context) // Coloca de forma lineal los elementos (Uno debajo de otro)
-        //empanadaSeleccionada = CarritoFragmentArgs.fromBundle(requireArguments()).empanadaSeleccionada
-        /*if (empanadaSeleccionada != null) {
-            carritoRepository.addEmpanadas(empanadaSeleccionada!!)
-            Log.d("REPOSITORIO!!!!!!!!!", carritoRepository.getCarritoEmpanadas().toString())
-        }*/
 
-        //pedido.setProductos(itemSeleccionado)
-        //var date = SimpleDateFormat("2005-11-06").format(Date())
         bttnComprar.setOnClickListener() {
-            /*auth = FirebaseAuth.getInstance()
-            val user: FirebaseUser? = auth.currentUser
-            val uid = user?.uid
             importeFinal = viewModel.importeTotal(listaProdSelec)
-            if (uid != null) {
-                viewModel.crearPedido("2021-11-14",uid, importeFinal, listaProdSelec)
-                Snackbar.make(v,"Creación de pedido exitosa", Snackbar.LENGTH_SHORT).show()
-            } else {
-                Snackbar.make(v,"Error en la creación del pedido", Snackbar.LENGTH_SHORT).show()
-            }*/
-            importeFinal = viewModel.importeTotal(listaProdSelec)
-            val pedido : PreCompra = PreCompra ("2021-11-14", importeFinal, viewModel.cantidadEmpanadas(listaProdSelec))
+            val pedido : PreCompra = PreCompra (Instant.now().toString(), importeFinal, viewModel.cantidadEmpanadas(listaProdSelec))
             val action1 = CarritoFragmentDirections
                 .actionCarritoFragmentToConfirmacionPedidoFragment(pedido)
-            Log.d("Test",action1.toString())
+            Log.d("CARRITO PRODUCTOS", listaProdSelec.toString())
             v.findNavController().navigate(action1)
         }
+
     }
+    /*val adapter = CarritoAdapter(carritoRepository.getCarritoEmpanadas(), requireContext()) { pos ->
+            onItemClick(pos)
+        }
+        recycler.adapter = adapter*/
+    //empanadaSeleccionada = CarritoFragmentArgs.fromBundle(requireArguments()).empanadaSeleccionada
+    /*if (empanadaSeleccionada != null) {
+        carritoRepository.addEmpanadas(empanadaSeleccionada!!)
+        Log.d("REPOSITORIO!!!!!!!!!", carritoRepository.getCarritoEmpanadas().toString())
+    }*/
+
+    //pedido.setProductos(itemSeleccionado)
+    //var date = SimpleDateFormat("2005-11-06").format(Date())
+        //confPedido = CarritoFragmentArgs.fromBundle(requireArguments()).confirmacionPedido
+        /*if (confPedido) {
+                auth = FirebaseAuth.getInstance()
+                val user: FirebaseUser? = auth.currentUser
+                val uid = user?.uid
+                importeFinal = viewModel.importeTotal(listaProdSelec)
+                if (uid != null) {
+                    viewModel.crearPedido(Instant.now().toString(),uid, importeFinal, listaProdSelec)
+                    Snackbar.make(v,"Creación de pedido exitosa", Snackbar.LENGTH_SHORT).show()
+                } else {
+                    Snackbar.make(v,"Error en la creación del pedido", Snackbar.LENGTH_SHORT).show()
+                }
+        }*/
+
 
     private fun onItemClick(position: Int, operacion: String){
-
         when (operacion){
-
             "suma" ->
                 listaProdSelec[position].sumarCantidad()
                 //Snackbar.make(v,"Máximo alcanzado", Snackbar.LENGTH_SHORT).show()
@@ -140,6 +136,7 @@ class CarritoFragment : Fragment() {
         super.onActivityCreated(savedInstanceState)
         viewModel = ViewModelProvider(this).get(CarritoViewModel::class.java)
         // TODO: Use the ViewModel
+        viewModel.mutableLiveData.value = listaProdSelec
     }
 
 }

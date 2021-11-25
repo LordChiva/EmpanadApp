@@ -27,10 +27,6 @@
         android:name="com.proyectoFinal.empanadApp.fragments.CarritoFragment"
         android:label="carrito_fragment"
         tools:layout="@layout/carrito_fragment" >
-        <argument
-            android:name="empanadaSeleccionada"
-            app:argType="com.proyectoFinal.empanadApp.entities.Producto"
-            app:nullable="true" />
         <action
             android:id="@+id/action_carritoFragment_to_confirmacionPedidoFragment"
             app:destination="@id/confirmacionPedidoFragment" />
@@ -54,5 +50,8 @@
             android:name="confirmacionPedido"
             app:argType="com.proyectoFinal.empanadApp.entities.PreCompra"
             app:nullable="true" />
+        <action
+            android:id="@+id/action_confirmacionPedidoFragment_to_empanadaFragment"
+            app:destination="@id/empanadaFragment" />
     </fragment>
 </navigation>

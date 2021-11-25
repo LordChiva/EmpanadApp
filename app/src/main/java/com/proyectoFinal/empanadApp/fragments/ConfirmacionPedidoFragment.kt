@@ -1,20 +1,29 @@
 package com.proyectoFinal.empanadApp.fragments
 
+import android.os.Build
 import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.TextView
-import androidx.fragment.app.FragmentTransaction
-import androidx.recyclerview.widget.RecyclerView
+import androidx.annotation.RequiresApi
+import androidx.lifecycle.Observer
+import androidx.navigation.findNavController
+import com.google.android.material.snackbar.Snackbar
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.FirebaseUser
+import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.FirebaseDatabase
 import com.proyectoFinal.empanadApp.R
-import com.proyectoFinal.empanadApp.entities.Pedido
 import com.proyectoFinal.empanadApp.entities.PreCompra
 import com.proyectoFinal.empanadApp.entities.Producto
+import com.proyectoFinal.empanadApp.view_models.CarritoViewModel
 import com.proyectoFinal.empanadApp.view_models.ConfirmacionPedidoViewModel
+import java.time.Instant
 
 class ConfirmacionPedidoFragment : Fragment() {
 
@@ -29,6 +38,12 @@ class ConfirmacionPedidoFragment : Fragment() {
     lateinit var txtTotalEmp: TextView
     lateinit var bttnComprar : Button
     private lateinit var pedido : PreCompra
+    private var confPedido : Boolean = false
+    private lateinit var vModel: CarritoViewModel
+    private var prodCompra : MutableList<Producto> = mutableListOf()
+    private lateinit var auth: FirebaseAuth
+    private lateinit var dbReference: DatabaseReference
+    private lateinit var database: FirebaseDatabase
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -43,6 +58,7 @@ class ConfirmacionPedidoFragment : Fragment() {
         return v
     }
 
+    @RequiresApi(Build.VERSION_CODES.O)
     override fun onStart() {
         super.onStart()
         pedido = ConfirmacionPedidoFragmentArgs.fromBundle(requireArguments()).confirmacionPedido!!
@@ -50,15 +66,39 @@ class ConfirmacionPedidoFragment : Fragment() {
         txtImporte.text = pedido.total.toString()
         txtTotalEmp.text = pedido.cantEmpanadasTotal.toString()
         bttnComprar.setOnClickListener {
-            getFragmentManager()?.beginTransaction()?.remove(this)?.commit()
+            auth = FirebaseAuth.getInstance()
+            val user: FirebaseUser? = auth.currentUser
+            val uid = user?.uid
+            if (uid != null) {
+                vModel.crearPedido(Instant.now().toString(),uid, pedido.total, prodCompra)
+                Snackbar.make(v,"Creación de pedido exitosa", Snackbar.LENGTH_SHORT).show()
+                val action1 = ConfirmacionPedidoFragmentDirections
+                    .actionConfirmacionPedidoFragmentToEmpanadaFragment()
+                v.findNavController().navigate(action1)
+            } else {
+                Snackbar.make(v,"Error en la creación del pedido", Snackbar.LENGTH_SHORT).show()
+            }
+            /*confPedido = true
+            val action1 = ConfirmacionPedidoFragmentDirections
+                .actionConfirmacionPedidoFragmentToCarritoFragment(this.confPedido)
+            v.findNavController().navigate(action1)*/
         }
         /*getFragmentManager()?.beginTransaction()?.remove(this)?.commit()*/
+    }
+
+    override fun onPause() {
+        super.onPause()
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         viewModel = ViewModelProvider(this).get(ConfirmacionPedidoViewModel::class.java)
         // TODO: Use the ViewModel
+        vModel = ViewModelProvider(this).get(CarritoViewModel::class.java)
+        Log.d("PRODUCTOS VIEWMODEL", vModel.mutableLiveData.value.toString())
+        vModel.mutableLiveData.observe(viewLifecycleOwner, Observer {
+            prodCompra = vModel.mutableLiveData.value!!
+        })
     }
 
 }

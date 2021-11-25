@@ -23,4 +23,7 @@
     <string name="name_datos_personales">Datos Personales</string>
     <string name="cantidad_producto">0</string>
     <string name="button_compra">Comprar</string>
+    <string name="txt_fecha">Fecha:</string>
+    <string name="txt_cantidad_empanadas">Cantidad de empanadas:</string>
+    <string name="txt_importe_total">Importe a pagar:</string>
 </resources>

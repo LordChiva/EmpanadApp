@@ -9,37 +9,38 @@
 
     <TextView
         android:id="@+id/txtFechaConfirmacion"
-        android:layout_width="194dp"
-        android:layout_height="52dp"
-        android:layout_marginTop="16dp"
+        android:layout_width="195dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="8dp"
         android:text="TextView"
         android:textSize="20sp"
-        app:layout_constraintBottom_toTopOf="@+id/txtCantTotalEmpanadas"
+        app:layout_constraintBottom_toTopOf="@+id/txtCantidadLetras"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.331"
+        app:layout_constraintHorizontal_bias="0.587"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/txtFechaLetras" />
 
     <TextView
         android:id="@+id/txtImpTotal"
-        android:layout_width="197dp"
-        android:layout_height="39dp"
-        android:layout_marginTop="16dp"
+        android:layout_width="195dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="8dp"
         android:text="TextView"
-        android:textSize="24sp"
+        android:textSize="20sp"
         app:layout_constraintBottom_toTopOf="@+id/bttnConfirmarCompra"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.336"
+        app:layout_constraintHorizontal_bias="0.588"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtCantTotalEmpanadas" />
+        app:layout_constraintTop_toBottomOf="@+id/txtImporteLetras" />
 
     <Button
         android:id="@+id/bttnConfirmarCompra"
         android:layout_width="148dp"
         android:layout_height="51dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginBottom="32dp"
         android:text="@string/button_compra"
-        android:textSize="20sp"
+        android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.87"
@@ -48,15 +49,54 @@
 
     <TextView
         android:id="@+id/txtCantTotalEmpanadas"
-        android:layout_width="197dp"
-        android:layout_height="59dp"
-        android:layout_marginTop="16dp"
+        android:layout_width="195dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="8dp"
         android:text="TextView"
         android:textSize="20sp"
-        app:layout_constraintBottom_toTopOf="@+id/txtImpTotal"
+        app:layout_constraintBottom_toTopOf="@+id/txtImporteLetras"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.336"
+        app:layout_constraintHorizontal_bias="0.588"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtCantidadLetras" />
+
+    <TextView
+        android:id="@+id/txtFechaLetras"
+        android:layout_width="150dp"
+        android:layout_height="45dp"
+        android:layout_marginTop="32dp"
+        android:text="@string/txt_fecha"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toTopOf="@+id/txtFechaConfirmacion"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.246"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/txtCantidadLetras"
+        android:layout_width="270dp"
+        android:layout_height="59dp"
+        android:layout_marginTop="16dp"
+        android:text="@string/txt_cantidad_empanadas"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toTopOf="@+id/txtCantTotalEmpanadas"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.444"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtFechaConfirmacion" />
+
+    <TextView
+        android:id="@+id/txtImporteLetras"
+        android:layout_width="188dp"
+        android:layout_height="47dp"
+        android:layout_marginTop="16dp"
+        android:text="@string/txt_importe_total"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toTopOf="@+id/txtImpTotal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.286"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtCantTotalEmpanadas" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
