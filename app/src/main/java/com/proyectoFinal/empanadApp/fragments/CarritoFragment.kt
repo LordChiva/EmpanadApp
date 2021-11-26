@@ -17,6 +17,7 @@ import androidx.navigation.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.firestore.ktx.firestore
@@ -24,6 +25,7 @@ import com.google.firebase.firestore.ktx.toObject
 import com.google.firebase.ktx.Firebase
 import com.proyectoFinal.empanadApp.R
 import com.proyectoFinal.empanadApp.adapters.CarritoAdapter
+import com.proyectoFinal.empanadApp.entities.Pedido
 import com.proyectoFinal.empanadApp.entities.PreCompra
 import com.proyectoFinal.empanadApp.entities.Producto
 import com.proyectoFinal.empanadApp.view_models.CarritoViewModel
@@ -49,6 +51,7 @@ class CarritoFragment : Fragment() {
     lateinit var carritoFrameLayout : ConstraintLayout
     var importeFinal : Double = 0.0
     private val sharedViewModel: CarritoViewModel by activityViewModels()
+    private lateinit var pedido : Pedido
 
 
 
@@ -87,10 +90,16 @@ class CarritoFragment : Fragment() {
         recycler.layoutManager =
             LinearLayoutManager(context) // Coloca de forma lineal los elementos (Uno debajo de otro)
 
+        auth = FirebaseAuth.getInstance()
+        val user: FirebaseUser? = auth.currentUser
+        val uid = user?.uid
+
+
         bttnComprar.setOnClickListener() {
             importeFinal = viewModel.importeTotal(listaProdSelec)
             val pedido : PreCompra = PreCompra (Instant.now().toString(), importeFinal, viewModel.cantidadEmpanadas(listaProdSelec))
-
+            this.pedido = Pedido(Instant.now().toString(),uid.toString(), importeFinal, listaProdSelec)
+            sharedViewModel.setPedido(this.pedido)
             val action1 = CarritoFragmentDirections
                 .actionCarritoFragmentToConfirmacionPedidoFragment(pedido)
             v.findNavController().navigate(action1)
@@ -139,7 +148,6 @@ class CarritoFragment : Fragment() {
         super.onActivityCreated(savedInstanceState)
         viewModel = ViewModelProvider(this).get(CarritoViewModel::class.java)
         // TODO: Use the ViewModel
-        sharedViewModel.setProductos(listaProdSelec)
         Log.d("VIEWMODEL LISTA", viewModel.getItem().toString())
         //viewModel.mutableLiveData.value = listaProdSelec
         /*viewModel.setItem(listaProdSelec)

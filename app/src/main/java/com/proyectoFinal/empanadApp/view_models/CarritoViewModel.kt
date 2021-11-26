@@ -14,9 +14,23 @@ import java.time.LocalDate
 import java.time.LocalDateTime
 import java.util.*
 
+
+
+
 class CarritoViewModel : ViewModel() {
     val db = Firebase.firestore
     private lateinit var auth: FirebaseAuth;
+    private var mPedido: MutableLiveData<Pedido>? = MutableLiveData()
+
+    fun setPedido(p: Pedido) {
+        mPedido!!.value = p
+    }
+
+    fun getPedido(): LiveData<Pedido>? {
+        if (mPedido == null) mPedido = MutableLiveData()
+        return mPedido
+    }
+
     private var _productos = MutableLiveData<MutableList<Producto>>()
     val productos : LiveData<MutableList<Producto>> = _productos
 
@@ -28,13 +42,17 @@ class CarritoViewModel : ViewModel() {
         _productos.value = prodSeleccionados
     }
 
-    fun crearPedido(
+    fun crearPedido(pedido: Pedido){
+        db.collection("Pedidos").add(pedido)
+    }
+
+    /*fun crearPedido(
             fecha: String, IDCliente: String, importeTotal: Double,
             detalleCompra: MutableList<Producto>){
 
         var pedido : Pedido = Pedido(fecha, IDCliente, importeTotal, detalleCompra)
         db.collection("Pedidos").add(pedido)
-    }
+    }*/
 
     fun importeTotal(productos: MutableList<Producto>): Double {
         var importeFinal = 0.0

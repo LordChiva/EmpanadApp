@@ -20,6 +20,7 @@ import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 import com.proyectoFinal.empanadApp.R
+import com.proyectoFinal.empanadApp.entities.Pedido
 import com.proyectoFinal.empanadApp.entities.PreCompra
 import com.proyectoFinal.empanadApp.entities.Producto
 import com.proyectoFinal.empanadApp.view_models.CarritoViewModel
@@ -46,6 +47,7 @@ class ConfirmacionPedidoFragment : Fragment() {
     private lateinit var dbReference: DatabaseReference
     private lateinit var database: FirebaseDatabase
     private val sharedViewModel: CarritoViewModel by activityViewModels()
+    private lateinit var pedidoViewModel: Pedido
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -67,11 +69,20 @@ class ConfirmacionPedidoFragment : Fragment() {
         txtFecha.text = pedido.fecha
         txtImporte.text = pedido.total.toString()
         txtTotalEmp.text = pedido.cantEmpanadasTotal.toString()
+
+        pedidoViewModel = sharedViewModel.getPedido()?.value!!
         bttnComprar.setOnClickListener {
-            auth = FirebaseAuth.getInstance()
+            /*auth = FirebaseAuth.getInstance()
             val user: FirebaseUser? = auth.currentUser
-            val uid = user?.uid
-            if (uid != null) {
+            val uid = user?.uid*/
+
+            sharedViewModel.crearPedido(pedidoViewModel)
+                Snackbar.make(v,"Creación de pedido exitosa", Snackbar.LENGTH_SHORT).show()
+                val action1 = ConfirmacionPedidoFragmentDirections
+                    .actionConfirmacionPedidoFragmentToEmpanadaFragment()
+                v.findNavController().navigate(action1)
+
+            /*if (uid != null) {
                 vModel.crearPedido(Instant.now().toString(),uid, pedido.total, prodCompra)
                 Snackbar.make(v,"Creación de pedido exitosa", Snackbar.LENGTH_SHORT).show()
                 val action1 = ConfirmacionPedidoFragmentDirections
@@ -79,7 +90,7 @@ class ConfirmacionPedidoFragment : Fragment() {
                 v.findNavController().navigate(action1)
             } else {
                 Snackbar.make(v,"Error en la creación del pedido", Snackbar.LENGTH_SHORT).show()
-            }
+            }*/
             /*confPedido = true
             val action1 = ConfirmacionPedidoFragmentDirections
                 .actionConfirmacionPedidoFragmentToCarritoFragment(this.confPedido)
@@ -96,9 +107,10 @@ class ConfirmacionPedidoFragment : Fragment() {
         super.onActivityCreated(savedInstanceState)
         viewModel = ViewModelProvider(this).get(ConfirmacionPedidoViewModel::class.java)
         // TODO: Use the ViewModel
+
         vModel = ViewModelProvider(requireActivity()).get(CarritoViewModel::class.java)
         Log.d("PRODUCTOS VIEWMODEL", prodCompra.toString())
-        prodCompra = vModel.getItem()!!
+        //prodCompra = vModel.getItem()!!
 
 
         /*vModel.mutableLiveData.observe(viewLifecycleOwner, Observer {
